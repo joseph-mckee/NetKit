@@ -1,0 +1,269 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:NetKit.UI.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="NetKit.UI.Views.IpConfigurationProfileView"
+             x:DataType="viewModels:IpConfigurationProfileViewModel">
+    <Design.DataContext>
+        <viewModels:IpConfigurationProfileViewModel />
+    </Design.DataContext>
+    <UserControl.Styles>
+        <Style Selector="Button">
+            <Setter Property="Padding" Value="5" />
+        </Style>
+    </UserControl.Styles>
+    <Border Classes="frame">
+        <Expander HorizontalAlignment="Stretch"
+                  Background="Transparent">
+            <Expander.Header>
+                <Grid ColumnDefinitions="Auto,*,Auto"
+                      ClipToBounds="True">
+                    <TextBox Grid.Column="0"
+                             Text="{Binding Name}"
+                             Watermark="Profile Name"
+                             VerticalAlignment="Center"
+                             MinWidth="200"
+                             IsVisible="{Binding IsEditing}" />
+                    <TextBlock Grid.Column="0"
+                               Classes="expanderHeaderText"
+                               Text="{Binding Name}"
+                               VerticalAlignment="Center"
+                               IsVisible="{Binding !IsEditing}" />
+                    <StackPanel Grid.Column="2"
+                                Spacing="5"
+                                HorizontalAlignment="Right"
+                                Orientation="Horizontal">
+                        <!-- <Button Content="Apply" -->
+                        <!--         Command="{Binding ApplyConfigurationCommand}" -->
+                        <!--         IsVisible="{Binding !IsEditing}" /> -->
+                        <Button Command="{Binding EditCommand}"
+                                IsVisible="{Binding !IsEditing}">
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Stretch"
+                                        Spacing="5">
+                                <Image Source="{StaticResource EditIcon}" Width="15" Height="15" />
+                                <TextBlock VerticalAlignment="Center" Text="Edit" />
+                            </StackPanel>
+                        </Button>
+                        <Button Command="{Binding SaveCommand}"
+                                IsVisible="{Binding IsEditing}"
+                                Padding="5">
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Stretch"
+                                        Spacing="5">
+                                <PathIcon Data="{StaticResource SaveIcon}" />
+                                <TextBlock VerticalAlignment="Center" Text="Save" />
+                            </StackPanel>
+                        </Button>
+                        <Button
+                            Command="{Binding ParentContext.RemoveProfileCommand}"
+                            CommandParameter="{Binding}">
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Stretch"
+                                        Spacing="5">
+                                <Image Source="{StaticResource DeleteIcon}" Width="15" Height="15" />
+                                <TextBlock VerticalAlignment="Center" Text="Delete" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Expander.Header>
+            <Grid ClipToBounds="True"
+                  ColumnDefinitions="*,*,.6*" ZIndex="10">
+                <Grid.Styles>
+                    <Style Selector="Button AccessText">
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                        <Setter Property="HorizontalAlignment" Value="Center" />
+                    </Style>
+                    <Style Selector="Border.profile-section">
+                        <Setter Property="Background" Value="#0FFFFFFF" />
+                        <Setter Property="Padding" Value="10" />
+                        <Setter Property="CornerRadius" Value="3" />
+                        <Setter Property="BoxShadow" Value="0 0 10 1 #1F000000" />
+                        <Setter Property="Margin" Value="5" />
+                    </Style>
+                </Grid.Styles>
+                <!-- IP Addresses -->
+                <Border Grid.Column="0" Classes="profile-section">
+                    <Grid RowDefinitions="Auto, *">
+                        <!-- IP Addresses Heading -->
+                        <Grid
+                            Margin="0 0 0 5"
+                            ColumnDefinitions="*, Auto">
+                            <TextBlock Text="IP Addresses:"
+                                       HorizontalAlignment="Left"
+                                       Margin="0 0 0 5" />
+                            <Button Grid.Column="1"
+                                    Content="+"
+                                    Width="16"
+                                    Height="16"
+                                    Padding="0"
+                                    Margin="0 0 5 5"
+                                    HorizontalAlignment="Right"
+                                    Command="{Binding AddIpAddressCommand}"
+                                    IsVisible="{Binding IsEditing}" />
+                        </Grid>
+                        <!-- IP Addresses Body -->
+                        <ItemsControl Grid.Row="1"
+                                      ItemsSource="{Binding IpSubnetPairs}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid ColumnDefinitions="*,Auto,*,Auto"
+                                          Margin="0 0 0 5">
+                                        <TextBox Grid.Column="0" Margin="0 0 5 0"
+                                                 Watermark="IP Address"
+                                                 Text="{Binding  IpAddress.Value}"
+                                                 IsVisible="{Binding $parent[ItemsControl].((viewModels:IpConfigurationProfileViewModel)DataContext).IsEditing}" />
+                                        <SelectableTextBlock Grid.Column="0"
+                                                             Margin="0 0 5 0"
+                                                             Text="{Binding  IpAddress.Value}"
+                                                             VerticalAlignment="Center"
+                                                             TextAlignment="Right"
+                                                             IsVisible="{Binding !$parent[ItemsControl].((viewModels:IpConfigurationProfileViewModel)DataContext).IsEditing}" />
+                                        <Rectangle Grid.Column="1" Width="1" Fill="#3FFFFFFF"
+                                                   IsVisible="{Binding !$parent[ItemsControl].((viewModels:IpConfigurationProfileViewModel)DataContext).IsEditing}" />
+                                        <TextBox Grid.Column="2" Margin="0 0 5 0"
+                                                 Watermark="Subnet Mask"
+                                                 Text="{Binding SubnetMask.Value}"
+                                                 IsVisible="{Binding $parent[ItemsControl].((viewModels:IpConfigurationProfileViewModel)DataContext).IsEditing}" />
+                                        <SelectableTextBlock Grid.Column="2" Margin="5 0 5 0"
+                                                             Text="{Binding  SubnetMask.Value}"
+                                                             VerticalAlignment="Center"
+                                                             TextAlignment="Left"
+                                                             IsVisible="{Binding !$parent[ItemsControl].((viewModels:IpConfigurationProfileViewModel)DataContext).IsEditing}" />
+                                        <Button Grid.Column="3"
+                                                Command="{Binding $parent[ItemsControl].((viewModels:IpConfigurationProfileViewModel)DataContext).RemoveIpSubnetPairCommand}"
+                                                CommandParameter="{Binding}"
+                                                Content="-"
+                                                VerticalAlignment="Center"
+                                                Padding="0"
+                                                Margin="0 0 5 0"
+                                                Width="16"
+                                                Height="16"
+                                                IsVisible="{Binding $parent[ItemsControl].((viewModels:IpConfigurationProfileViewModel)DataContext).IsIpRemovable}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Grid>
+                </Border>
+                <!-- Gateways -->
+                <Border Grid.Column="1" Classes="profile-section">
+                    <Grid RowDefinitions="Auto,*">
+                        <!-- Gateways Heading -->
+                        <Grid Grid.Row="0"
+                              Margin="0 0 0 5"
+                              ColumnDefinitions="*,Auto">
+                            <TextBlock Text="Gateways:"
+                                       HorizontalAlignment="Left"
+                                       Margin="0 0 0 5" />
+                            <Button Grid.Column="1"
+                                    Content="+"
+                                    Width="16"
+                                    Height="16"
+                                    Margin="0 0 5 5"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    Command="{Binding AddGatewayCommand}"
+                                    IsVisible="{Binding IsEditing}" />
+                        </Grid>
+                        <!-- Gateways Body -->
+                        <ItemsControl Grid.Row="1"
+                                      ItemsSource="{Binding GatewayMetricPairs}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid ColumnDefinitions="*,Auto,*,Auto"
+                                          Margin="0 0 0 5">
+                                        <TextBox Grid.Column="0" Margin="0 0 5 0"
+                                                 Watermark="Gateway Address"
+                                                 Text="{Binding  GatewayAddress.Value}"
+                                                 IsVisible="{Binding $parent[ItemsControl].((viewModels:IpConfigurationProfileViewModel)DataContext).IsEditing}" />
+                                        <SelectableTextBlock Grid.Column="0"
+                                                             Margin="0 0 5 0"
+                                                             Text="{Binding  GatewayAddress.Value}"
+                                                             VerticalAlignment="Center"
+                                                             TextAlignment="Right"
+                                                             IsVisible="{Binding !$parent[ItemsControl].((viewModels:IpConfigurationProfileViewModel)DataContext).IsEditing}" />
+                                        <Rectangle Grid.Column="1" Width="1" Fill="#3FFFFFFF"
+                                                   IsVisible="{Binding !$parent[ItemsControl].((viewModels:IpConfigurationProfileViewModel)DataContext).IsEditing}" />
+                                        <TextBox Grid.Column="2" Margin="0 0 5 0"
+                                                 Watermark="Gateway Metric"
+                                                 Text="{Binding GatewayMetric.Value}"
+                                                 IsVisible="{Binding $parent[ItemsControl].((viewModels:IpConfigurationProfileViewModel)DataContext).IsEditing}" />
+                                        <SelectableTextBlock Grid.Column="2" Margin="5 0 5 0"
+                                                             Text="{Binding  GatewayMetric.Value}"
+                                                             VerticalAlignment="Center"
+                                                             TextAlignment="Left"
+                                                             IsVisible="{Binding !$parent[ItemsControl].((viewModels:IpConfigurationProfileViewModel)DataContext).IsEditing}" />
+                                        <Button Grid.Column="3"
+                                                Command="{Binding $parent[ItemsControl].((viewModels:IpConfigurationProfileViewModel)DataContext).RemoveGatewayCommand}"
+                                                CommandParameter="{Binding}"
+                                                Content="-"
+                                                VerticalAlignment="Center"
+                                                Padding="0"
+                                                Margin="0 0 5 0"
+                                                Width="16"
+                                                Height="16"
+                                                IsVisible="{Binding $parent[ItemsControl].((viewModels:IpConfigurationProfileViewModel)DataContext).IsIpRemovable}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Grid>
+                </Border>
+                <!-- DNS Servers -->
+                <Border Grid.Column="2" Classes="profile-section">
+                    <Grid RowDefinitions="Auto,*">
+                        <Grid Grid.Row="0"
+                              Margin="0 0 0 5"
+                              ColumnDefinitions="*,Auto">
+                            <TextBlock Grid.Column="0"
+                                       Text="DNS Servers:"
+                                       HorizontalAlignment="Left"
+                                       Margin="0 0 0 5" />
+                            <Button Grid.Column="1"
+                                    Margin="0 0 5 0"
+                                    Content="+"
+                                    Width="16"
+                                    Height="16"
+                                    Padding="0"
+                                    Command="{Binding AddDnsServerCommand}"
+                                    IsVisible="{Binding IsEditing}" />
+                        </Grid>
+                        <ItemsControl Grid.Row="1"
+                                      ItemsSource="{Binding DnsServers}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid ColumnDefinitions="*, Auto" Margin="0 0 0 5">
+                                        <TextBox
+                                            Text="{Binding  Value}"
+                                            Watermark="Server Address"
+                                            Margin="0 0 5 0"
+                                            IsVisible="{Binding $parent[ItemsControl].((viewModels:IpConfigurationProfileViewModel)DataContext).IsEditing}" />
+                                        <SelectableTextBlock Grid.Column="0"
+                                                             Margin="0 0 5 0"
+                                                             Text="{Binding  Value}"
+                                                             VerticalAlignment="Center"
+                                                             TextAlignment="Center"
+                                                             IsVisible="{Binding !$parent[ItemsControl].((viewModels:IpConfigurationProfileViewModel)DataContext).IsEditing}" />
+                                        <Button Grid.Column="1"
+                                                Content="-"
+                                                Width="16"
+                                                Height="16"
+                                                Padding="0"
+                                                Margin="0 0 5 5"
+                                                Command="{Binding $parent[ItemsControl].((viewModels:IpConfigurationProfileViewModel)DataContext).RemoveDnsServerCommand}"
+                                                CommandParameter="{Binding}"
+                                                IsVisible="{Binding $parent[ItemsControl].((viewModels:IpConfigurationProfileViewModel)DataContext).IsDnsServerRemovable}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Expander>
+    </Border>
+</UserControl>

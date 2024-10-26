@@ -1,0 +1,178 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Classes="frame">
+            <StackPanel Spacing="5">
+            <Button Content="Button" />
+            <TextBlock Text="Text Block" />
+            <TextBox Text="Text Box" />
+            <SelectableTextBlock Text="Selectable Text Block" />
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+    
+    <Style Selector="Border">
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="ClipToBounds" Value="True" />
+    </Style>
+    <Style Selector="Border#ExpandCollapseChevronBorder">
+        <Setter Property="Margin" Value="0" />
+    </Style>
+    <Style Selector="Border.frame">
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BoxShadow" Value="0 0 10 1 #1F000000" />
+        <Setter Property="Background" Value="#1FFFFFFF" />
+    </Style>
+    <Style Selector="Border.frame > Grid">
+        <Setter Property="Margin" Value="5" />
+    </Style>
+    <Style Selector="Border.frame > StackPanel">
+        <Setter Property="Margin" Value="5" />
+    </Style>
+
+    <Style Selector="Button">
+        <Setter Property="Height" Value="24" />
+        <Setter Property="Padding" Value="5 0" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <Style Selector="Button, ListBoxItem">
+        <Setter Property="IsTabStop" Value="False" />
+    </Style>
+
+    <Style Selector="ComboBox">
+        <Setter Property="Height" Value="24" />
+        <Setter Property="MinHeight" Value="24" />
+        <Setter Property="Padding" Value="5 5" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <Style Selector="ComboBoxItem">
+        <Setter Property="Padding" Value="5" />
+    </Style>
+
+    <Style Selector="ContextMenu">
+        <Setter Property="ClipToBounds" Value="True" />
+        <Setter Property="MinHeight" Value="0" />
+        <Setter Property="Padding" Value="1" />
+    </Style>
+    <Style Selector="ContextMenu Border">
+        <Setter Property="ClipToBounds" Value="True" />
+    </Style>
+    <Style Selector="ContextMenu /template/ ItemsPresenter">
+        <Setter Property="Margin" Value="0" />
+    </Style>
+    <Style Selector="ContextMenu /template/ ItemsPresenter StackPanel">
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style Selector="DataGrid.replyGrid DataGridCell:selected Rectangle">
+        <Setter Property="IsVisible" Value="False" />
+    </Style>
+    <Style Selector="DataGridCell">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+    </Style>
+    <Style Selector="DataGridCell:focus Rectangle">
+        <Setter Property="IsVisible" Value="False" />
+    </Style>
+    <Style Selector="DataGridCell:selected Rectangle">
+        <Setter Property="IsVisible" Value="False" />
+    </Style>
+    <Style Selector="DataGridColumnHeader">
+        <Setter Property="Height" Value="28" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+    </Style>
+    <Style Selector="DataGridColumnHeadersPresenter">
+        <Setter Property="Height" Value="28" />
+        <Setter Property="ClipToBounds" Value="True" />
+    </Style>
+
+    <Style Selector="DataGridRow">
+        <Setter Property="Height" Value="24" />
+        <Setter Property="Background" Value="#0FFFFFFF" />
+    </Style>
+
+    <Style Selector="Expander">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="MinHeight" Value="32" />
+    </Style>
+    <Style Selector="Expander > DockPanel > ToggleButton TextBlock">
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+
+    <Style Selector="Grid">
+        <Setter Property="ClipToBounds" Value="True" />
+    </Style>
+    <Style Selector="Grid.info:pointerover">
+        <Setter Property="Background" Value="#0fffffff" />
+    </Style>
+    <Style Selector="Grid.info /template/ Border">
+        <Setter Property="Padding" Value="2" />
+    </Style>
+
+    <Style Selector="MenuItem">
+        <Setter Property="Padding" Value="5" />
+    </Style>
+
+    <Style Selector="NumericUpDown">
+        <Setter Property="Height" Value="24" />
+        <Setter Property="MinHeight" Value="24" />
+        <Setter Property="Padding" Value="5 0" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+    <Style Selector="NumericUpDown ButtonSpinner">
+        <Setter Property="Height" Value="24" />
+        <Setter Property="MinHeight" Value="24" />
+    </Style>
+
+    <Style Selector="Popup">
+        <Setter Property="ClipToBounds" Value="True" />
+    </Style>
+    
+    <Style Selector="Rectangle.connector">
+        <Setter Property="Margin" Value="2,0,2,0" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="Stroke" Value="White" />
+        <Setter Property="Height" Value="1" />
+        <Setter Property="StrokeThickness" Value=".5" />
+        <Setter Property="StrokeDashArray" Value="1, 5" />
+        <Setter Property="Opacity" Value=".5" />
+        <Setter Property="StrokeLineCap" Value="Round" />
+    </Style>
+
+    <!-- <Style Selector="SelectableTextBlock"> -->
+    <!--     ~1~ <Setter Property="MinHeight" Value="0" /> @1@ -->
+    <!--     ~1~ <Setter Property="Padding" Value="1" /> @1@ -->
+    <!--     ~1~ <Setter Property="ClipToBounds" Value="True" /> @1@ -->
+    <!-- </Style> -->
+    <!-- <Style Selector="SelectableTextBlock Border"> -->
+    <!--     ~1~ <Setter Property="ClipToBounds" Value="True" /> @1@ -->
+    <!-- </Style> -->
+    <!-- <Style Selector="SelectableTextBlock /template/ ItemsPresenter"> -->
+    <!--     ~1~ <Setter Property="Margin" Value="0" /> @1@ -->
+    <!-- </Style> -->
+    <!-- <Style Selector="SelectableTextBlock /template/ ItemsPresenter StackPanel"> -->
+    <!--     ~1~ <Setter Property="VerticalAlignment" Value="Center" /> @1@ -->
+    <!-- </Style> -->
+    
+    <Style Selector="TextBlock.expanderHeaderText">
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+
+    <Style Selector="TextBox">
+        <Setter Property="Height" Value="24" />
+        <Setter Property="MinHeight" Value="24" />
+        <Setter Property="Padding" Value="5 0" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <Style Selector="ToggleButton#ExpanderHeader">
+        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="Padding" Value="5 0 0 0" />
+    </Style>
+</Styles>

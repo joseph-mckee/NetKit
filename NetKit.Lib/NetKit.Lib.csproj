@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Reference Include="System.Management">
+        <HintPath>..\Netkit.UI\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="CsvHelper" Version="33.0.1" />
+      <PackageReference Include="Lextm.SharpSnmpLib" Version="12.5.3" />
+      <PackageReference Include="SnmpSharpNet" Version="0.9.6" />
+      <PackageReference Include="System.Management" Version="7.0.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Vendor\MACList\oui.csv" />
+      <EmbeddedResource Include="Vendor\MACList\oui.csv" />
+    </ItemGroup>
+
+</Project>

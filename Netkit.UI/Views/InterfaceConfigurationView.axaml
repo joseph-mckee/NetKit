@@ -1,0 +1,25 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:NetKit.UI.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="NetKit.UI.Views.InterfaceConfigurationView"
+             x:DataType="views:InterfaceConfigurationView">
+    <UserControl.Styles>
+        <Style Selector="Button">
+            <Setter Property="Padding" Value="5" />
+        </Style>
+    </UserControl.Styles>
+    <Border Background="#0FFFFFFF"
+            Margin="10"
+            CornerRadius="5"
+            BoxShadow="0 0 10 1 #1F000000">
+        <Expander HorizontalAlignment="Stretch"
+                  Background="Transparent"
+                  Padding="5">
+            <Expander.Header>
+            </Expander.Header>
+        </Expander>
+    </Border>
+</UserControl>

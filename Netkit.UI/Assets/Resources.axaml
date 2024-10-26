@@ -1,0 +1,67 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.PreviewWith>
+        <Border Height="200" Padding="20">
+            <Expander Header="Expander Header" Content="Expander Content" />
+        </Border>
+    </Design.PreviewWith>
+    
+    <!-- Theme Dependant Properties -->
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <Color x:Key="AcrylicTintColor">#FFFFFF</Color>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+            <Color x:Key="AcrylicTintColor">#000000</Color>
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+
+    <!-- CheckBox -->
+    <!-- <SolidColorBrush x:Key="CheckBoxPressedBackground" Color="MediumPurple" /> -->
+    <!-- <SolidColorBrush x:Key="CheckBoxPressedBorderBrush" Color="MediumPurple" /> -->
+    <!-- <SolidColorBrush x:Key="CheckBoxCheckedDefaultBackground" Color="MediumPurple" /> -->
+    <!-- <SolidColorBrush x:Key="CheckBoxCheckedDefaultBorderBrush" Color="MediumPurple" /> -->
+    <!-- <SolidColorBrush x:Key="CheckBoxCheckedPointeroverBackground" Opacity=".8" Color="MediumPurple" /> -->
+    <!-- <SolidColorBrush x:Key="CheckBoxCheckedPointeroverBorderBrush" Color="MediumPurple" /> -->
+    <!-- <SolidColorBrush x:Key="CheckBoxPointeroverBorderBrush" Color="MediumPurple" /> -->
+    <!-- <SolidColorBrush x:Key="CheckBoxCheckedPressedBackground" Color="MediumPurple" /> -->
+    <!-- <SolidColorBrush x:Key="CheckBoxCheckedPressedBorderBrush" Color="MediumPurple" /> -->
+    <!-- <SolidColorBrush x:Key="CheckBoxCheckedDisabledBackground" Opacity=".5" Color="MediumPurple" /> -->
+    <!-- <SolidColorBrush x:Key="CheckBoxCheckedDisabledBorderBrush" Color="MediumPurple" /> -->
+    <!-- <SolidColorBrush x:Key="CheckBoxCardCheckedBackground" Opacity="0.2" Color="#FF5554ff" /> -->
+    <!-- <SolidColorBrush x:Key="CheckBoxCardCheckedBorderBrush" Color="#FF5554ff" /> -->
+    <!-- <SolidColorBrush x:Key="CheckBoxCardCheckedDisabledBorderBrush" Color="MediumPurple" /> -->
+    <!-- <SolidColorBrush x:Key="CheckBoxCardCheckedPointeroverBorderBrush" Color="#FF7f81ff" /> -->
+    <!-- <SolidColorBrush x:Key="CheckBoxCardCheckedPressedBorderBrush" Color="#FFa9acff" /> -->
+
+    <!-- ComboBox -->
+    <Thickness x:Key="ComboBoxDropdownContentMargin">0,0,0,0</Thickness>
+    <!-- <SolidColorBrush x:Key="ComboBoxSelectorPressedBorderBrush" Color="MediumPurple" /> -->
+    <!-- <SolidColorBrush x:Key="ComboBoxItemSelectedBackground" Opacity="0.2" Color="MediumPurple" /> -->
+    <!-- <SolidColorBrush x:Key="ComboBoxItemSelectedPointeroverBackground" Opacity="0.3" Color="MediumPurple" /> -->
+
+    <!-- ControlContent -->
+    <x:Double x:Key="ControlContentThemeFontSize">12</x:Double>
+    <FontFamily x:Key="ContentControlThemeFontFamily">Segoe UI</FontFamily>
+
+    <!-- DataGrid -->
+    <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundBrush" Opacity="0.10" Color="Black" />
+    <!-- <SolidColorBrush x:Key="DataGridRowSelectedBackground" Opacity="0.2" Color="MediumPurple" /> -->
+    <!-- <SolidColorBrush x:Key="DataGridRowSelectedPointeroverBackground" Opacity="0.3" Color="MediumPurple" /> -->
+    <x:Double x:Key="DataGridSortIconMinWidth">20</x:Double>
+
+    <!-- Expander -->
+    <SolidColorBrush x:Key="ExpanderHeaderBackground" Color="Transparent" />
+    <SolidColorBrush x:Key="ExpanderHeaderBackgroundPointerOver" Color="#3F000000" />
+    <SolidColorBrush x:Key="ExpanderHeaderBackgroundPressed" Color="#6F000000" />
+    <x:Double x:Key="ExpanderChevronButtonSize">24</x:Double>
+    <Thickness x:Key="ExpanderChevronMargin">5</Thickness>
+
+    <!-- MenuFlyout -->
+    <Thickness x:Key="MenuFlyoutScrollerMargin">0,0,0,0</Thickness>
+
+    <!-- TabItem -->
+    <!-- <SolidColorBrush x:Key="TabItemLinePipeSelectedBackground" Color="MediumPurple" /> -->
+
+</ResourceDictionary>

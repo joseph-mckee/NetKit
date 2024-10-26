@@ -1,0 +1,190 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\joseph\\OneDrive - Default Directory\\Documents\\source\\repos\\NetKit\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9CA982F1-9BB6-42EA-BA0C-2AFFD6FA7C49}|NetKit.UI\\NetKit.UI.Client\\NetKit.UI.Client.csproj|c:\\users\\joseph\\onedrive - default directory\\documents\\source\\repos\\netkit\\netkit.ui\\netkit.ui.client\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9CA982F1-9BB6-42EA-BA0C-2AFFD6FA7C49}|NetKit.UI\\NetKit.UI.Client\\NetKit.UI.Client.csproj|solutionrelative:netkit.ui\\netkit.ui.client\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CA982F1-9BB6-42EA-BA0C-2AFFD6FA7C49}|NetKit.UI\\NetKit.UI.Client\\NetKit.UI.Client.csproj|c:\\users\\joseph\\onedrive - default directory\\documents\\source\\repos\\netkit\\netkit.ui\\netkit.ui.client\\pages\\devices.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9CA982F1-9BB6-42EA-BA0C-2AFFD6FA7C49}|NetKit.UI\\NetKit.UI.Client\\NetKit.UI.Client.csproj|solutionrelative:netkit.ui\\netkit.ui.client\\pages\\devices.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CA982F1-9BB6-42EA-BA0C-2AFFD6FA7C49}|NetKit.UI\\NetKit.UI.Client\\NetKit.UI.Client.csproj|c:\\users\\joseph\\onedrive - default directory\\documents\\source\\repos\\netkit\\netkit.ui\\netkit.ui.client\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9CA982F1-9BB6-42EA-BA0C-2AFFD6FA7C49}|NetKit.UI\\NetKit.UI.Client\\NetKit.UI.Client.csproj|solutionrelative:netkit.ui\\netkit.ui.client\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3FEA316-CBDD-407E-AAB2-894006BCF0B4}|NetKit.UI\\NetKit.UI\\NetKit.UI.csproj|c:\\users\\joseph\\onedrive - default directory\\documents\\source\\repos\\netkit\\netkit.ui\\netkit.ui\\wwwroot\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{D3FEA316-CBDD-407E-AAB2-894006BCF0B4}|NetKit.UI\\NetKit.UI\\NetKit.UI.csproj|solutionrelative:netkit.ui\\netkit.ui\\wwwroot\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CA982F1-9BB6-42EA-BA0C-2AFFD6FA7C49}|NetKit.UI\\NetKit.UI.Client\\NetKit.UI.Client.csproj|c:\\users\\joseph\\onedrive - default directory\\documents\\source\\repos\\netkit\\netkit.ui\\netkit.ui.client\\pages\\map.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9CA982F1-9BB6-42EA-BA0C-2AFFD6FA7C49}|NetKit.UI\\NetKit.UI.Client\\NetKit.UI.Client.csproj|solutionrelative:netkit.ui\\netkit.ui.client\\pages\\map.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CA982F1-9BB6-42EA-BA0C-2AFFD6FA7C49}|NetKit.UI\\NetKit.UI.Client\\NetKit.UI.Client.csproj|c:\\users\\joseph\\onedrive - default directory\\documents\\source\\repos\\netkit\\netkit.ui\\netkit.ui.client\\pages\\weather.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9CA982F1-9BB6-42EA-BA0C-2AFFD6FA7C49}|NetKit.UI\\NetKit.UI.Client\\NetKit.UI.Client.csproj|solutionrelative:netkit.ui\\netkit.ui.client\\pages\\weather.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3FEA316-CBDD-407E-AAB2-894006BCF0B4}|NetKit.UI\\NetKit.UI\\NetKit.UI.csproj|c:\\users\\joseph\\onedrive - default directory\\documents\\source\\repos\\netkit\\netkit.ui\\netkit.ui\\components\\pages\\error.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D3FEA316-CBDD-407E-AAB2-894006BCF0B4}|NetKit.UI\\NetKit.UI\\NetKit.UI.csproj|solutionrelative:netkit.ui\\netkit.ui\\components\\pages\\error.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3FEA316-CBDD-407E-AAB2-894006BCF0B4}|NetKit.UI\\NetKit.UI\\NetKit.UI.csproj|c:\\users\\joseph\\onedrive - default directory\\documents\\source\\repos\\netkit\\netkit.ui\\netkit.ui\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D3FEA316-CBDD-407E-AAB2-894006BCF0B4}|NetKit.UI\\NetKit.UI\\NetKit.UI.csproj|solutionrelative:netkit.ui\\netkit.ui\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CA982F1-9BB6-42EA-BA0C-2AFFD6FA7C49}|NetKit.UI\\NetKit.UI.Client\\NetKit.UI.Client.csproj|c:\\users\\joseph\\onedrive - default directory\\documents\\source\\repos\\netkit\\netkit.ui\\netkit.ui.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9CA982F1-9BB6-42EA-BA0C-2AFFD6FA7C49}|NetKit.UI\\NetKit.UI.Client\\NetKit.UI.Client.csproj|solutionrelative:netkit.ui\\netkit.ui.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3FEA316-CBDD-407E-AAB2-894006BCF0B4}|NetKit.UI\\NetKit.UI\\NetKit.UI.csproj|c:\\users\\joseph\\onedrive - default directory\\documents\\source\\repos\\netkit\\netkit.ui\\netkit.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3FEA316-CBDD-407E-AAB2-894006BCF0B4}|NetKit.UI\\NetKit.UI\\NetKit.UI.csproj|solutionrelative:netkit.ui\\netkit.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Devices.razor",
+              "DocumentMoniker": "C:\\Users\\joseph\\OneDrive - Default Directory\\Documents\\source\\repos\\NetKit\\NetKit.UI\\NetKit.UI.Client\\Pages\\Devices.razor",
+              "RelativeDocumentMoniker": "NetKit.UI\\NetKit.UI.Client\\Pages\\Devices.razor",
+              "ToolTip": "C:\\Users\\joseph\\OneDrive - Default Directory\\Documents\\source\\repos\\NetKit\\NetKit.UI\\NetKit.UI.Client\\Pages\\Devices.razor",
+              "RelativeToolTip": "NetKit.UI\\NetKit.UI.Client\\Pages\\Devices.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-12T04:12:25.719Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\joseph\\OneDrive - Default Directory\\Documents\\source\\repos\\NetKit\\NetKit.UI\\NetKit.UI.Client\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "NetKit.UI\\NetKit.UI.Client\\Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\joseph\\OneDrive - Default Directory\\Documents\\source\\repos\\NetKit\\NetKit.UI\\NetKit.UI.Client\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "NetKit.UI\\NetKit.UI.Client\\Layout\\MainLayout.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-12T03:39:22.027Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Map.razor",
+              "DocumentMoniker": "C:\\Users\\joseph\\OneDrive - Default Directory\\Documents\\source\\repos\\NetKit\\NetKit.UI\\NetKit.UI.Client\\Pages\\Map.razor",
+              "RelativeDocumentMoniker": "NetKit.UI\\NetKit.UI.Client\\Pages\\Map.razor",
+              "ToolTip": "C:\\Users\\joseph\\OneDrive - Default Directory\\Documents\\source\\repos\\NetKit\\NetKit.UI\\NetKit.UI.Client\\Pages\\Map.razor",
+              "RelativeToolTip": "NetKit.UI\\NetKit.UI.Client\\Pages\\Map.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-12T04:16:03.831Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "app.css",
+              "DocumentMoniker": "C:\\Users\\joseph\\OneDrive - Default Directory\\Documents\\source\\repos\\NetKit\\NetKit.UI\\NetKit.UI\\wwwroot\\app.css",
+              "RelativeDocumentMoniker": "NetKit.UI\\NetKit.UI\\wwwroot\\app.css",
+              "ToolTip": "C:\\Users\\joseph\\OneDrive - Default Directory\\Documents\\source\\repos\\NetKit\\NetKit.UI\\NetKit.UI\\wwwroot\\app.css",
+              "RelativeToolTip": "NetKit.UI\\NetKit.UI\\wwwroot\\app.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-05-12T05:17:53.241Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\joseph\\OneDrive - Default Directory\\Documents\\source\\repos\\NetKit\\NetKit.UI\\NetKit.UI.Client\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "NetKit.UI\\NetKit.UI.Client\\Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\joseph\\OneDrive - Default Directory\\Documents\\source\\repos\\NetKit\\NetKit.UI\\NetKit.UI.Client\\Pages\\Home.razor",
+              "RelativeToolTip": "NetKit.UI\\NetKit.UI.Client\\Pages\\Home.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-12T03:44:54.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Weather.razor",
+              "DocumentMoniker": "C:\\Users\\joseph\\OneDrive - Default Directory\\Documents\\source\\repos\\NetKit\\NetKit.UI\\NetKit.UI.Client\\Pages\\Weather.razor",
+              "RelativeDocumentMoniker": "NetKit.UI\\NetKit.UI.Client\\Pages\\Weather.razor",
+              "ToolTip": "C:\\Users\\joseph\\OneDrive - Default Directory\\Documents\\source\\repos\\NetKit\\NetKit.UI\\NetKit.UI.Client\\Pages\\Weather.razor",
+              "RelativeToolTip": "NetKit.UI\\NetKit.UI.Client\\Pages\\Weather.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-12T03:44:50.938Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Error.razor",
+              "DocumentMoniker": "C:\\Users\\joseph\\OneDrive - Default Directory\\Documents\\source\\repos\\NetKit\\NetKit.UI\\NetKit.UI\\Components\\Pages\\Error.razor",
+              "RelativeDocumentMoniker": "NetKit.UI\\NetKit.UI\\Components\\Pages\\Error.razor",
+              "ToolTip": "C:\\Users\\joseph\\OneDrive - Default Directory\\Documents\\source\\repos\\NetKit\\NetKit.UI\\NetKit.UI\\Components\\Pages\\Error.razor",
+              "RelativeToolTip": "NetKit.UI\\NetKit.UI\\Components\\Pages\\Error.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-12T03:42:57.217Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\joseph\\OneDrive - Default Directory\\Documents\\source\\repos\\NetKit\\NetKit.UI\\NetKit.UI.Client\\Program.cs",
+              "RelativeDocumentMoniker": "NetKit.UI\\NetKit.UI.Client\\Program.cs",
+              "ToolTip": "C:\\Users\\joseph\\OneDrive - Default Directory\\Documents\\source\\repos\\NetKit\\NetKit.UI\\NetKit.UI.Client\\Program.cs",
+              "RelativeToolTip": "NetKit.UI\\NetKit.UI.Client\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-12T03:39:50.538Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\joseph\\OneDrive - Default Directory\\Documents\\source\\repos\\NetKit\\NetKit.UI\\NetKit.UI\\Program.cs",
+              "RelativeDocumentMoniker": "NetKit.UI\\NetKit.UI\\Program.cs",
+              "ToolTip": "C:\\Users\\joseph\\OneDrive - Default Directory\\Documents\\source\\repos\\NetKit\\NetKit.UI\\NetKit.UI\\Program.cs",
+              "RelativeToolTip": "NetKit.UI\\NetKit.UI\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-12T03:39:18.091Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\joseph\\OneDrive - Default Directory\\Documents\\source\\repos\\NetKit\\NetKit.UI\\NetKit.UI\\Components\\App.razor",
+              "RelativeDocumentMoniker": "NetKit.UI\\NetKit.UI\\Components\\App.razor",
+              "ToolTip": "C:\\Users\\joseph\\OneDrive - Default Directory\\Documents\\source\\repos\\NetKit\\NetKit.UI\\NetKit.UI\\Components\\App.razor",
+              "RelativeToolTip": "NetKit.UI\\NetKit.UI\\Components\\App.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-12T03:39:14.944Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pageViewModels="clr-namespace:NetKit.UI.ViewModels.PageViewModels"
+             x:DataType="pageViewModels:DnsPageViewModel"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="NetKit.UI.Views.PageViews.DnsPageView">
+    <Design.DataContext>
+        <pageViewModels:DnsPageViewModel />
+    </Design.DataContext>
+        <Grid RowDefinitions="Auto, *" Margin="0">
+            <Border Classes="frame" Margin="10 10 10 0 ">
+                <Grid ColumnDefinitions="Auto,*,Auto">
+                    <StackPanel Grid.Column="0" Margin="10 0 0 0" Orientation="Horizontal"
+                                HorizontalAlignment="Right" Spacing="10">
+                        <TextBlock VerticalAlignment="Center" Text="Filter:" />
+                        <TextBox MinWidth="200" MaxWidth="500" Text="{Binding FilterText}"
+                                 Watermark="Enter filter text.." />
+                    </StackPanel>
+                    <Button Grid.Column="2" Command="{Binding FlushCacheCommand}"
+                            Content="Flush DNS Cache" />
+                </Grid>
+            </Border>
+            <Border Grid.Row="1" Classes="frame" Margin="10">
+                <DataGrid ItemsSource="{Binding FilteredDnsEntries}" GridLinesVisibility="All"
+                          CanUserReorderColumns="True" CanUserResizeColumns="True" CanUserSortColumns="True"
+                          IsReadOnly="True">
+                    <DataGrid.Styles>
+                        <Style Selector="DataGridCell">
+                            <!-- <Setter Property="HorizontalContentAlignment" Value="Center" /> -->
+                        </Style>
+                        <Style Selector="DataGridColumnHeader">
+                            <!-- <Setter Property="HorizontalContentAlignment" Value="Center" /> -->
+                        </Style>
+                    </DataGrid.Styles>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="2*" Binding="{Binding Entry}" Header="Entry" />
+                        <DataGridTextColumn Width="2*" Binding="{Binding Name}" Header="Name" />
+                        <DataGridTextColumn Width="*" Binding="{Binding Type}" Header="Type" />
+                        <DataGridTextColumn Width="*" Binding="{Binding Status}" Header="Status" />
+                        <DataGridTextColumn Width="*" Binding="{Binding Section}" Header="Section" />
+                        <!-- <DataGridTextColumn Width="*" Binding="{Binding TimeToLive}" Header="TTL" /> -->
+                        <DataGridTextColumn Width="2*" Binding="{Binding Data}" Header="Data" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
+        </Grid>
+</UserControl>

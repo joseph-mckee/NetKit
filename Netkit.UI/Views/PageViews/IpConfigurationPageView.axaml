@@ -1,0 +1,76 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:view="clr-namespace:NetKit.UI.Views"
+             xmlns:viewModels="clr-namespace:NetKit.UI.ViewModels"
+             xmlns:pageViewModels="clr-namespace:NetKit.UI.ViewModels.PageViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="NetKit.UI.Views.PageViews.IpConfigurationPageView"
+             x:Name="IpConfigurationPage"
+             x:DataType="pageViewModels:IpConfigurationPageViewModel">
+    <Design.DataContext>
+        <pageViewModels:IpConfigurationPageViewModel />
+    </Design.DataContext>
+    <Grid ColumnDefinitions="*">
+        <Canvas ZIndex="1">
+            <Canvas.Styles>
+                <Style Selector="Button AccessText">
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                </Style>
+            </Canvas.Styles>
+            <StackPanel Canvas.Top="10" Canvas.Right="10"
+                        Orientation="Horizontal">
+                <Button Command="{Binding ApplyDhcpCommand}"
+                        Height="32"
+                        Margin="0 0 5 0"
+                        Content="Set DHCP" />
+                <Button Command="{Binding AddProfileCommand}"
+                        Height="32"
+                        Width="32"
+                        FontSize="20"
+                        Content="+" />
+            </StackPanel>
+        </Canvas>
+        <TabControl Grid.Column="0"
+                    Padding="0">
+            <TabControl.Styles>
+                <Style Selector="TabItem">
+                    <Setter Property="FontSize" Value="18" />
+                </Style>
+            </TabControl.Styles>
+            <TabItem Header="Interfaces">
+                <!-- Interfaces Container -->
+                <view:IpConfigView DataContext="{Binding IpConfigViewModel}" />
+            </TabItem>
+            <TabItem Header="Profiles">
+                <ScrollViewer Margin="10 0" VerticalScrollBarVisibility="Auto">
+                    <!-- Profiles Container -->
+                    <ItemsControl ItemsSource="{Binding IpConfigurationProfiles}">
+                        <ItemsControl.Styles>
+                            <Style Selector="TextBox">
+                                <Setter Property="FontSize" Value="12" />
+                                <Setter Property="Padding" Value="5 0" />
+                                <Setter Property="TextAlignment" Value="Center" />
+                                <Setter Property="VerticalContentAlignment" Value="Center" />
+                            </Style>
+                            <Style Selector="SelectableTextBlock">
+                                <Setter Property="FontSize" Value="12" />
+                                <Setter Property="Padding" Value="0 8 0 8" />
+                                <Setter Property="TextAlignment" Value="Center" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                            </Style>
+                        </ItemsControl.Styles>
+                        <!-- This template should be moved to its own view. -->
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate DataType="{x:Type viewModels:IpConfigurationProfileViewModel}">
+                                <view:IpConfigurationProfileView Margin=" 0 0 0 5" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>
