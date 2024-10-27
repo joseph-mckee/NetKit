@@ -26,7 +26,7 @@ public partial class IpConfigViewModel : ViewModelBase
 {
     private readonly Dictionary<string, string> _vendorCache = new();
     private readonly VendorLookup _vendorLookup = new();
-    [ObservableProperty] private UnicastIPAddressInformationCollection? _addresses;
+    [ObservableProperty] private ObservableCollection<UnicastIPAddressInformation> _addresses = [];
     [ObservableProperty] private IPAddressInformationCollection? _anycastAddresses;
     [ObservableProperty] private ObservableCollection<ArpEntry> _arpEntries = [];
     [ObservableProperty] private string? _arpTableFilterText = string.Empty;
@@ -38,14 +38,14 @@ public partial class IpConfigViewModel : ViewModelBase
     [ObservableProperty] private string? _description;
     [ObservableProperty] private IPAddressCollection? _dhcpAddresses;
     [ObservableProperty] private bool _dhcpEnabled;
-    [ObservableProperty] private IPAddressCollection? _dnsAddresses;
+    [ObservableProperty] private ObservableCollection<IPAddress> _dnsAddresses = [];
     [ObservableProperty] private bool _dnsEnabled;
     [ObservableProperty] private string? _dnsSuffix;
     [ObservableProperty] private bool _doRefresh = true;
     [ObservableProperty] private bool _dynamicDnsEnabled;
     [ObservableProperty] private ObservableCollection<ArpEntry> _filteredArpEntries = [];
     [ObservableProperty] private bool _forwardingEnabled;
-    [ObservableProperty] private GatewayIPAddressInformationCollection? _gatewayAddresses;
+    [ObservableProperty] private ObservableCollection<GatewayIPAddressInformation> _gatewayAddresses = [];
 
 
     [ObservableProperty] private bool _hasArp;
@@ -65,7 +65,7 @@ public partial class IpConfigViewModel : ViewModelBase
     [ObservableProperty] private bool _isRouteTableExpanded = false;
     [ObservableProperty] private bool _isStatisticsExpanded = false;
     [ObservableProperty] private int _mtu;
-    [ObservableProperty] private MulticastIPAddressInformationCollection? _multicastAddresses;
+    [ObservableProperty] private ObservableCollection<MulticastIPAddressInformation> _multicastAddresses = [];
     [ObservableProperty] private bool _multicastSupport;
 
     // private int _metric;
@@ -200,15 +200,14 @@ public partial class IpConfigViewModel : ViewModelBase
         if (PhysicalAddress != formattedMacAddress.ToString()) PhysicalAddress = formattedMacAddress.ToString();
 
         var ipProperties = networkInterface.GetIPProperties();
-        Addresses = ipProperties.UnicastAddresses;
-        AnycastAddresses = ipProperties.AnycastAddresses;
-        DnsAddresses = ipProperties.DnsAddresses;
+        Addresses = new ObservableCollection<UnicastIPAddressInformation>(ipProperties.UnicastAddresses.Where(y => y.Address.AddressFamily == AddressFamily.InterNetwork));
+        DnsAddresses = new ObservableCollection<IPAddress>(ipProperties.DnsAddresses.Where(x => x.AddressFamily == AddressFamily.InterNetwork));
         if (DnsSuffix != ipProperties.DnsSuffix) DnsSuffix = ipProperties.DnsSuffix;
-        GatewayAddresses = ipProperties.GatewayAddresses;
-        MulticastAddresses = ipProperties.MulticastAddresses;
+        GatewayAddresses = new ObservableCollection<GatewayIPAddressInformation>(ipProperties.GatewayAddresses.Where(x => x.Address.AddressFamily == AddressFamily.InterNetwork));
+        MulticastAddresses = new ObservableCollection<MulticastIPAddressInformation>(ipProperties.MulticastAddresses.Where(x => x.Address.AddressFamily == AddressFamily.InterNetwork));
         DhcpAddresses = ipProperties.DhcpServerAddresses;
         if (DynamicDnsEnabled != ipProperties.IsDynamicDnsEnabled) DynamicDnsEnabled = ipProperties.IsDynamicDnsEnabled;
-        SubnetMask = new ObservableCollection<IPAddress>(ipProperties.UnicastAddresses.Select(x => x.IPv4Mask));
+        SubnetMask = new ObservableCollection<IPAddress>(Addresses.Select(x => x.IPv4Mask));
 
         // Some interfaces will only have IPv4 or IPv6 and not both.
         // This will handle either case.
