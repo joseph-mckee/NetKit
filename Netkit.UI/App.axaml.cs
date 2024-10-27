@@ -4,6 +4,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using Microsoft.Extensions.DependencyInjection;
+using NetKit.UI.Services;
 using NetKit.UI.ViewModels;
 using NetKit.UI.ViewModels.PageViewModels;
 using NetKit.UI.Views;
@@ -48,6 +49,6 @@ public static class ServiceCollectionExtensions {
         collection.AddSingleton<TraceRoutePageViewModel>();
         collection.AddSingleton<ScanPageViewModel>();
         collection.AddSingleton<IpConfigurationPageViewModel>();
-        collection.AddSingleton<IpConfigViewModel>();
+        collection.AddSingleton<IpConfigurationProfileViewModel>();
     }
 }

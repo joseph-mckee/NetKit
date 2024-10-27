@@ -10,45 +10,23 @@ using ViewModels_IpConfigurationProfileViewModel = NetKit.UI.ViewModels.IpConfig
 
 namespace NetKit.UI.Services;
 
-public class IpConfigurationService
+public class IpConfigurationService(uint index)
 {
-    private readonly List<NetworkAdapterConfiguration> _networkAdapterConfigurations = [];
-
-    public IpConfigurationService()
-    {
-        _networkAdapterConfigurations.Add(new NetworkAdapterConfiguration(12));
-        var a = NetworkAdapterConfiguration.GetAll();
-    }
+    private readonly NetworkAdapterConfiguration _networkAdapterConfiguration = new(index);
 
     public void ApplyProfile(ViewModels_IpConfigurationProfileViewModel profileViewModel)
     {
-        const int interfaceIndex = 12;
-        var configuration = _networkAdapterConfigurations.FirstOrDefault(x => x.InterfaceIndex == interfaceIndex);
-        if (configuration is null)
-        {
-            configuration = new NetworkAdapterConfiguration(interfaceIndex);
-            _networkAdapterConfigurations.Add(configuration);
-        }
-
         var ipConfig = ConvertProfileToModel(profileViewModel);
 
-        configuration.EnableStatic(ipConfig.IpAddresses, ipConfig.SubnetMasks);
-        configuration.SetGateways(ipConfig.Gateways, ipConfig.GatewayMetrics);
-        configuration.SetDnsServerSearchOrder(ipConfig.DnsServers);
+        _networkAdapterConfiguration.EnableStatic(ipConfig.IpAddresses, ipConfig.SubnetMasks);
+        _networkAdapterConfiguration.SetGateways(ipConfig.Gateways, ipConfig.GatewayMetrics);
+        _networkAdapterConfiguration.SetDnsServerSearchOrder(ipConfig.DnsServers);
     }
 
     public void SetDhcp()
     {
-        const int interfaceIndex = 12;
-        var configuration = _networkAdapterConfigurations.FirstOrDefault(x => x.InterfaceIndex == interfaceIndex);
-        if (configuration is null)
-        {
-            configuration = new NetworkAdapterConfiguration(interfaceIndex);
-            _networkAdapterConfigurations.Add(configuration);
-        }
-
-        configuration.EnableDhcp();
-        configuration.SetDnsServerSearchOrder();
+        _networkAdapterConfiguration.EnableDhcp();
+        _networkAdapterConfiguration.SetDnsServerSearchOrder();
     }
 
     private static IpConfigurationModel ConvertProfileToModel(ViewModels_IpConfigurationProfileViewModel profileViewModel)

@@ -17,30 +17,21 @@ public partial class IpConfigurationPageViewModel : ViewModelBase, IPageViewMode
     [
     ];
 
-    [ObservableProperty] private ObservableCollection<InterfaceConfigurationViewModel> _interfaceConfigurations = [];
-
-    private readonly IpConfigurationService _ipConfigurationService = new();
 
     [ObservableProperty] private IpConfigViewModel _ipConfigViewModel;
-
-    public IpConfigurationPageViewModel() : this(new IpConfigViewModel())
-    {
-        
-    }
     
-    public IpConfigurationPageViewModel(IpConfigViewModel ipConfigViewModel)
+    public IpConfigurationPageViewModel()
     {
-        _ipConfigViewModel = ipConfigViewModel;
         IpConfigurationProfiles =
         [
-            new IpConfigurationProfileViewModel(this, _ipConfigurationService)
+            new IpConfigurationProfileViewModel(this)
             {
                 IpSubnetPairs = [new IpSubnetPair("172.16.12.100", "255.255.255.0")],
                 GatewayMetricPairs = [new GatewayMetricPair("172.16.12.1", "1")],
                 DnsServers = [new BindableString("172.16.12.1")],
                 Name = "Default Profile"
             },
-            new IpConfigurationProfileViewModel(this, _ipConfigurationService)
+            new IpConfigurationProfileViewModel(this)
             {
                 IpSubnetPairs = [new IpSubnetPair("172.16.12.200", "255.255.255.0")],
                 GatewayMetricPairs = [new GatewayMetricPair("172.16.12.1", "1")],
@@ -48,29 +39,14 @@ public partial class IpConfigurationPageViewModel : ViewModelBase, IPageViewMode
                 Name = "Other Profile"
             }
         ];
-        InterfaceConfigurations = 
-        [
-            new InterfaceConfigurationViewModel(this, _ipConfigurationService)
-        ];
-    }
+        _ipConfigViewModel = new IpConfigViewModel(this);
 
-    [RelayCommand]
-    public void ReloadInterfaces()
-    {
-        
-    }
-
-    [RelayCommand]
-    public void ApplyDhcpCommand()
-    {
-        var ipConfigurationService = new IpConfigurationService();
-        ipConfigurationService.SetDhcp();
     }
 
     [RelayCommand]
     public void AddProfileCommand()
     {
-        IpConfigurationProfiles.Add(new IpConfigurationProfileViewModel(this, _ipConfigurationService));
+        IpConfigurationProfiles.Add(new IpConfigurationProfileViewModel(this));
     }
 
     [RelayCommand]

@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using NetKit.Lib.Arp;
 using NetKit.Lib.IP;
 using NetKit.UI.Models;
+using NetKit.UI.Services;
 using NetKit.UI.ViewModels.PageViewModels;
 using NetworkToolkitModern.Lib.Vendor;
 
@@ -90,9 +91,13 @@ public partial class IpConfigViewModel : ViewModelBase
     [ObservableProperty] private bool _usesWins;
     [ObservableProperty] private IPAddressCollection? _winsServerAddresses;
 
+    [ObservableProperty] private ObservableCollection<IpConfigurationProfileViewModel> _profiles;
+    [ObservableProperty] private IpConfigurationProfileViewModel _selectedProfile;
     
-    public IpConfigViewModel()
+    public IpConfigViewModel(IpConfigurationPageViewModel ipConfigurationPageViewModel)
     {
+        _profiles = ipConfigurationPageViewModel.IpConfigurationProfiles;
+        _selectedProfile = _profiles[0];
         Update();
         RefreshInterval = 1;
         FilteredArpEntries = ArpEntries;
@@ -349,5 +354,19 @@ public partial class IpConfigViewModel : ViewModelBase
     public void RefreshCommand()
     {
         Update();
+    }
+
+    [RelayCommand]
+    public void ApplyProfileCommand()
+    {
+        var ipService = new IpConfigurationService((uint)Index);
+        ipService.ApplyProfile(SelectedProfile);
+    }
+    
+    [RelayCommand]
+    public void SetDhcpCommand()
+    {
+        var ipService = new IpConfigurationService((uint)Index);
+        ipService.SetDhcp();
     }
 }

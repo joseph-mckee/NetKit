@@ -25,8 +25,34 @@
             <SelectableTextBlock HorizontalAlignment="Right" Text="{Binding DataType=net:IPAddress}" />
         </DataTemplate>
     </UserControl.DataTemplates>
-    <Grid RowDefinitions="*,Auto">
-        <ScrollViewer Grid.Row="0" Margin="10 0">
+    <Grid RowDefinitions="Auto, *,Auto">
+        <Border Classes="frame" Margin="10">
+            <Grid ColumnDefinitions="Auto, *, Auto">
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="5">
+                    <TextBlock Text="Select Profile:" VerticalAlignment="Center" />
+                    <ComboBox ItemsSource="{Binding Profiles}"
+                              SelectedItem="{Binding SelectedProfile}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Spacing="2">
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
+                                    <TextBlock VerticalAlignment="Center" Text="|" />
+                                    <TextBlock VerticalAlignment="Center"
+                                               Text="{Binding IpSubnetPairs[0].IpAddress.Value}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Button Content="Apply Profile"
+                            Command="{Binding ApplyProfileCommand}" />
+                    <Button Content="Set DHCP" Command="{Binding SetDhcpCommand}" />
+                </StackPanel>
+                <StackPanel Grid.Column="2" Orientation="Horizontal" >
+                    <Button Content="Reset Interface" />
+                </StackPanel>
+            </Grid>
+        </Border>
+        <ScrollViewer Grid.Row="1" Margin="10 0">
             <StackPanel Spacing="5">
                 <Border Classes="frame">
                     <Expander IsExpanded="{Binding IsInterfaceInfoExpanded}"
@@ -577,7 +603,7 @@
                 </Border>
             </StackPanel>
         </ScrollViewer>
-        <Border Grid.Row="1" Classes="frame" Margin="10" ClipToBounds="True">
+        <Border Grid.Row="2" Classes="frame" Margin="10" ClipToBounds="True">
             <Grid ColumnDefinitions="Auto,Auto,*,Auto" HorizontalAlignment="Stretch">
                 <TextBlock VerticalAlignment="Center" Text="Select Interface:  " />
                 <ComboBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"
@@ -591,15 +617,17 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <StackPanel Grid.Column="3" Margin="10,0,0,0" Orientation="Horizontal">
-                    <TextBlock Text="Auto Refresh:  " VerticalAlignment="Center" />
-                    <CheckBox IsChecked="{Binding DoRefresh}" Margin="0,0,10,0" />
+                <StackPanel Grid.Column="3" Orientation="Horizontal" Spacing="5">
+                    <TextBlock Text="Auto Refresh:" VerticalAlignment="Center" />
+                    <CheckBox IsChecked="{Binding DoRefresh}" />
                     <TextBlock Text="Refresh Interval (s):  " VerticalAlignment="Center" />
-                    <NumericUpDown Minimum="1" Maximum="60" AllowSpin="True" ParsingNumberStyle="Integer"
-                                   IsEnabled="{Binding DoRefresh}" Value="{Binding RefreshInterval}" Increment="1"
-                                   MinWidth="60" />
-                    <Button Content="Refresh" Command="{Binding RefreshCommand}" IsEnabled="{Binding !DoRefresh}"
-                            Margin="10,0,0,0" />
+                    <NumericUpDown Minimum="1" Maximum="60"
+                                   AllowSpin="True" ParsingNumberStyle="Integer" Increment="1"
+                                   IsEnabled="{Binding DoRefresh}"
+                                   Value="{Binding RefreshInterval}"
+                                   MinWidth="100" />
+                    <Button Content="Refresh" Command="{Binding RefreshCommand}"
+                            IsEnabled="{Binding !DoRefresh}" />
                 </StackPanel>
             </Grid>
         </Border>

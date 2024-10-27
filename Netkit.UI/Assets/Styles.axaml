@@ -1,16 +1,18 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
-        <Border Classes="frame">
-            <StackPanel Spacing="5">
-            <Button Content="Button" />
-            <TextBlock Text="Text Block" />
-            <TextBox Text="Text Box" />
-            <SelectableTextBlock Text="Selectable Text Block" />
-            </StackPanel>
+        <Border Background="#0F000000">
+            <Border Classes="frame" Margin="10">
+                <StackPanel Spacing="5">
+                    <Button Content="Button" />
+                    <TextBlock Text="Text Block" />
+                    <TextBox Text="Text Box" />
+                    <SelectableTextBlock Text="Selectable Text Block" />
+                </StackPanel>
+            </Border>
         </Border>
     </Design.PreviewWith>
-    
+
     <Style Selector="Border">
         <Setter Property="Padding" Value="0" />
         <Setter Property="ClipToBounds" Value="True" />
@@ -20,8 +22,7 @@
     </Style>
     <Style Selector="Border.frame">
         <Setter Property="CornerRadius" Value="5" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BoxShadow" Value="0 0 10 1 #1F000000" />
+        <Setter Property="BoxShadow" Value="0 0 1 1 #1F000000" />
         <Setter Property="Background" Value="#1FFFFFFF" />
     </Style>
     <Style Selector="Border.frame > Grid">
@@ -133,7 +134,7 @@
     <Style Selector="Popup">
         <Setter Property="ClipToBounds" Value="True" />
     </Style>
-    
+
     <Style Selector="Rectangle.connector">
         <Setter Property="Margin" Value="2,0,2,0" />
         <Setter Property="VerticalAlignment" Value="Bottom" />
@@ -159,7 +160,7 @@
     <!-- <Style Selector="SelectableTextBlock /template/ ItemsPresenter StackPanel"> -->
     <!--     ~1~ <Setter Property="VerticalAlignment" Value="Center" /> @1@ -->
     <!-- </Style> -->
-    
+
     <Style Selector="TextBlock.expanderHeaderText">
         <Setter Property="FontSize" Value="14" />
     </Style>

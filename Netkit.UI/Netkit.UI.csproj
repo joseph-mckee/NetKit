@@ -4,6 +4,15 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <!--<PublishSingleFile>true</PublishSingleFile>-->
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+        <SelfContained>true</SelfContained>
+        <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+        <DebugType>embedded</DebugType>
+        <TrimMode>partial</TrimMode>
+        <PublishReadyToRun>true</PublishReadyToRun>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
     </PropertyGroup>
@@ -14,42 +23,43 @@
 
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="11.2.0-rc1" />
-        <PackageReference Include="Avalonia.Desktop" Version="11.2.0-rc1" />
-        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.0-rc1" />
-        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.0-rc1" />
+        <PackageReference Include="Avalonia" Version="11.2.0-rc1"/>
+        <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.2.0-rc1"/>
+        <PackageReference Include="Avalonia.Desktop" Version="11.2.0-rc1"/>
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.0-rc1"/>
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.0-rc1"/>
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.2.0-rc1" />
-        <PackageReference Include="Avalonia.ReactiveUI" Version="11.2.0-rc1" />
-        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
-        <PackageReference Include="CrypticWizard.RandomWordGenerator" Version="0.9.5" />
-        <PackageReference Include="LiveChartsCore.SkiaSharpView.Avalonia" Version="2.0.0-rc3.3" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0-rc.2.24473.5" />
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.2.0-rc1"/>
+        <PackageReference Include="Avalonia.ReactiveUI" Version="11.2.0-rc1"/>
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2"/>
+        <PackageReference Include="CrypticWizard.RandomWordGenerator" Version="0.9.5"/>
+        <PackageReference Include="LiveChartsCore.SkiaSharpView.Avalonia" Version="2.0.0-rc3.3"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0-rc.2.24473.5"/>
     </ItemGroup>
 
 
     <ItemGroup>
-      <Compile Update="Views\PageViews\HomePageView.axaml.cs">
-        <DependentUpon>HomePageView.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-      <Compile Update="Views\PageViews\IpConfigurationPageView.axaml.cs">
-        <DependentUpon>IpConfigurationPageView.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-      <Compile Update="Views\PageViews\PingPageView.axaml.cs">
-        <DependentUpon>PingPageView.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-      <Compile Update="Views\IpConfigurationProfileView.axaml.cs">
-        <DependentUpon>IpConfigurationProfileView.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
+        <Compile Update="Views\PageViews\HomePageView.axaml.cs">
+            <DependentUpon>HomePageView.axaml</DependentUpon>
+            <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="Views\PageViews\IpConfigurationPageView.axaml.cs">
+            <DependentUpon>IpConfigurationPageView.axaml</DependentUpon>
+            <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="Views\PageViews\PingPageView.axaml.cs">
+            <DependentUpon>PingPageView.axaml</DependentUpon>
+            <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="Views\IpConfigurationProfileView.axaml.cs">
+            <DependentUpon>IpConfigurationProfileView.axaml</DependentUpon>
+            <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
 
 
     <ItemGroup>
-      <ProjectReference Include="..\NetKit.Device.Management\NetKit.Device.Management.csproj" />
-      <ProjectReference Include="..\NetKit.Lib\NetKit.Lib.csproj" />
+        <ProjectReference Include="..\NetKit.Device.Management\NetKit.Device.Management.csproj"/>
+        <ProjectReference Include="..\NetKit.Lib\NetKit.Lib.csproj"/>
     </ItemGroup>
 </Project>

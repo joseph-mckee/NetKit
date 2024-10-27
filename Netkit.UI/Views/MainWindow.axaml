@@ -85,7 +85,7 @@
                     </StackPanel>
                 </SplitView.Pane>
                 <SplitView.Content>
-                    <Border CornerRadius="12 0 0 0"
+                    <Border CornerRadius="10 0 0 0"
                             BoxShadow="inset 0 0 1 1 #1F000000"
                             Background="#1F000000">
                         <TransitioningContentControl Content="{Binding CurrentPage}" />

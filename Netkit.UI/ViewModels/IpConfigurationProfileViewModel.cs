@@ -27,18 +27,14 @@ public partial class IpConfigurationProfileViewModel : ObservableObject
     [ObservableProperty] private ObservableCollection<BindableString> _dnsServers = [new BindableString()];
 
     [ObservableProperty] private IpConfigurationPageViewModel _parentContext;
-
-    private readonly IpConfigurationService _ipConfigurationService;
-
-    public IpConfigurationProfileViewModel() : this(new IpConfigurationPageViewModel(), new IpConfigurationService())
+    
+    public IpConfigurationProfileViewModel() : this(new IpConfigurationPageViewModel())
     {
     }
 
-    public IpConfigurationProfileViewModel(IpConfigurationPageViewModel parentContext,
-        IpConfigurationService ipConfigurationService)
+    public IpConfigurationProfileViewModel(IpConfigurationPageViewModel parentContext)
     {
         _parentContext = parentContext;
-        _ipConfigurationService = ipConfigurationService;
         _name = GenerateName();
         ModerateButtons();
     }
@@ -88,13 +84,6 @@ public partial class IpConfigurationProfileViewModel : ObservableObject
         GatewayMetricPairs.Remove(emptyGateways);
         var emptyDnsServers = DnsServers.Where(x => string.IsNullOrEmpty(x.Value)).ToList();
         DnsServers.Remove(emptyDnsServers);
-    }
-
-
-    [RelayCommand]
-    public void ApplyConfigurationCommand()
-    {
-        _ipConfigurationService.ApplyProfile(this);
     }
 
     [RelayCommand]
