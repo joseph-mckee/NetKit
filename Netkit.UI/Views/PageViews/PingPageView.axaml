@@ -10,20 +10,14 @@
         <vm:PingPageViewModel />
     </Design.DataContext>
     <UserControl.Styles>
-        <Style Selector="TextBlock.label">
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Left" />
-            <Setter Property="FontSize" Value="12" />
-        </Style>
-        <!-- <Style Selector="TextBox.field"> -->
-        <!--     <Setter Property="VerticalAlignment" Value="Center" /> -->
-        <!--     <Setter Property="FontSize" Value="12" /> -->
-        <!--     <Setter Property="IsReadOnly" Value="{Binding IsPinging}" /> -->
-        <!-- </Style> -->
-        <Style Selector="NumericUpDown.field">
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="FontSize" Value="12" />
+        <Style Selector="TextBox">
             <Setter Property="IsReadOnly" Value="{Binding IsPinging}" />
+        </Style>
+        <Style Selector="NumericUpDown">
+            <Setter Property="IsReadOnly" Value="{Binding IsPinging}" />
+            <Setter Property="ParsingNumberStyle" Value="Integer" />
+            <Setter Property="Maximum" Value="2147483647" />
+            <Setter Property="Minimum" Value="1" />
         </Style>
         <Style Selector="CheckBox">
             <Setter Property="IsEnabled" Value="{Binding IsStopped}" />
@@ -32,98 +26,78 @@
             <Setter Property="IsEnabled" Value="{Binding IsStopped}" />
         </Style>
     </UserControl.Styles>
-    <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,Auto,Auto,Auto" Margin="0">
-        <Grid RowDefinitions="*,Auto" Grid.RowSpan="3">
-            <Border Classes="frame" ClipToBounds="True" Margin="10">
-                <ScrollViewer>
-                    <StackPanel Margin="5">
-                        <TextBlock Classes="label" Text="Host:  " />
-                        <TextBox Margin="0,0,0,10" Text="{Binding Host}"
+    <Grid ColumnDefinitions="250,Auto,*"
+          RowDefinitions="*,Auto,Auto">
+        <!-- Ping options -->
+        <Border Grid.Column="0" Grid.Row="0"
+                Classes="frame">
+            <ScrollViewer>
+                <StackPanel Margin="5"
+                            Spacing="5">
+                    <StackPanel>
+                        <TextBlock Text="Host:" />
+                        <TextBox Text="{Binding Host}"
                                  Watermark="Enter a Hostname or IP" />
-                        <TextBlock Classes="label" Text="Attempts:  " />
-                        <Grid ColumnDefinitions="*,Auto,Auto" Margin="0,0,0,10">
-                            <NumericUpDown Classes="field" Margin="0,0,10,0"
-                                           IsEnabled="{Binding !IsContinuous}"
-                                           Value="{Binding Attempts}"
-                                           ParsingNumberStyle="Integer" Minimum="1" Increment="1" Maximum="2147483647"
-                                           Watermark="Amount of pings to send" />
-                            <TextBlock Grid.Column="1" VerticalAlignment="Center" TextAlignment="Right" Classes="label"
-                                       Text="Continuous:  " />
-                            <CheckBox Grid.Column="2" IsChecked="{Binding IsContinuous}" VerticalAlignment="Center" />
-                        </Grid>
-                        <TextBlock Classes="label" Text="Timeout:  " />
-                        <NumericUpDown Classes="field" Margin="0,0,0,10"
-                                       Value="{Binding Timeout}" Watermark="Max time to wait for response"
-                                       ParsingNumberStyle="Integer" Minimum="1" Increment="1000" Maximum="2147483647" />
-                        <TextBlock Classes="label" Text="Delay:  " />
-                        <NumericUpDown Classes="field" Margin="0,0,0,10"
-                                       Watermark="Time between pings" Value="{Binding Delay}"
-                                       ParsingNumberStyle="Integer" Minimum="1" Maximum="2147483647" Increment="100" />
-                        <TextBlock Classes="label" Text="Max Hops:  " />
-                        <NumericUpDown Classes="field" Margin="0,0,0,10"
-                                       Value="{Binding Hops}" Watermark="Max length of path"
-                                       ParsingNumberStyle="Integer" Maximum="2147483647" Increment="1" />
-                        <TextBlock Classes="label" Text="Buffer:  " />
-                        <Grid ColumnDefinitions="*,Auto,Auto" 
-                              Margin="0,0,0,10">
-                            <NumericUpDown Classes="field" Margin="0,0,10,0"
-                                           Value="{Binding Buffer}" Watermark="Size of packet"
-                                           ParsingNumberStyle="Integer" Maximum="1500" Increment="10" Minimum="1" />
-                            <TextBlock Grid.Column="1" VerticalAlignment="Center" TextAlignment="Right" Classes="label"
-                                       Text="Fragmentable:  " />
-                            <CheckBox Grid.Column="2" VerticalAlignment="Center" 
-                                      IsChecked="{Binding Fragmentable}" />
-                        </Grid>
-                        <TextBlock Classes="label" Text="Source IP:  " />
-                        <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                                  ItemsSource="{Binding NetworkInterfaces}"
-                                  SelectedItem="{Binding SelectedInterface}"
-                                  SelectedIndex="{Binding SelectedIndex}">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock VerticalAlignment="Center" Text="{Binding IpAddress}" />
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
                     </StackPanel>
-                </ScrollViewer>
-
-            </Border>
-            <Border Grid.Row="1" Classes="frame" Margin="10,0,10,10">
-                <Grid ColumnDefinitions="*, *, *"
-                    HorizontalAlignment="Stretch">
-                    <Button Grid.Column="0" Margin="0,0,10,0" 
-                            HorizontalAlignment="Stretch"
-                            HorizontalContentAlignment="Center"
-                            IsEnabled="{Binding IsStopped}" 
-                            Command="{Binding StartPing}"
-                            Content="Start" />
-                    <Button Grid.Column="1" Margin="0,0,10,0" 
-                            HorizontalAlignment="Stretch"
-                            HorizontalContentAlignment="Center"
-                            IsEnabled="{Binding IsPinging}" 
-                            Command="{Binding StopPinging}"
-                            Content="Stop" />
-                    <Button Grid.Column="2" 
-                            HorizontalAlignment="Stretch"
-                            HorizontalContentAlignment="Center"
-                            IsEnabled="{Binding IsStopped}" 
-                            Command="{Binding Reset}" Content="Reset" />
-                </Grid>
-            </Border>
-
-        </Grid>
-        <Border Grid.Column="1" Grid.Row="0"
-                Classes="frame" ClipToBounds="True"
-                Margin="0,10,10,10">
-            <DataGrid Classes="replyGrid"
-                      HorizontalAlignment="Stretch"
-                      Name="ReplyGrid"
+                    <StackPanel>
+                        <TextBlock Text="Attempts:  " />
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="5">
+                            <NumericUpDown IsEnabled="{Binding !IsContinuous}"
+                                           Value="{Binding Attempts}"
+                                           Watermark="Amount of pings to send"
+                                           Increment="1" />
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center"
+                                           TextAlignment="Right"
+                                           Text="Continuous:  " />
+                                <CheckBox IsChecked="{Binding IsContinuous}"
+                                          VerticalAlignment="Center" />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                    <TextBlock Text="Timeout:" />
+                    <NumericUpDown Value="{Binding Timeout}"
+                                   Watermark="Max time to wait for response"
+                                   Increment="1000" />
+                    <TextBlock Text="Delay:  " />
+                    <NumericUpDown Value="{Binding Delay}"
+                                   Watermark="Time between pings"
+                                   Increment="100" />
+                    <TextBlock Text="Max Hops:  " />
+                    <NumericUpDown Value="{Binding Hops}"
+                                   Watermark="Max length of path"
+                                   Increment="1" />
+                    <TextBlock Text="Buffer:  " />
+                    <StackPanel>
+                        <NumericUpDown Value="{Binding Buffer}"
+                                       Watermark="Size of packet"
+                                       Increment="10" />
+                        <TextBlock VerticalAlignment="Center"
+                                   TextAlignment="Right"
+                                   Text="Fragmentable:" />
+                        <CheckBox IsChecked="{Binding Fragmentable}"
+                                  VerticalAlignment="Center" />
+                    </StackPanel>
+                    <TextBlock Text="Source IP:  " />
+                    <ComboBox SelectedItem="{Binding SelectedInterface}"
+                              ItemsSource="{Binding NetworkInterfaces}"
+                              SelectedIndex="{Binding SelectedIndex}"
+                              HorizontalAlignment="Stretch" />
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+        <GridSplitter Grid.Column="1" Grid.Row="0" />
+        <!-- Ping results -->
+        <Border Grid.Column="2" Grid.Row="0"
+                ClipToBounds="True"
+                Classes="frame">
+            <DataGrid ItemsSource="{Binding PingReplies}"
                       CanUserResizeColumns="True"
                       CanUserSortColumns="False"
-                      IsReadOnly="True"
                       GridLinesVisibility="All"
-                      ItemsSource="{Binding PingReplies}">
+                      IsReadOnly="True"
+                      Name="ReplyGrid">
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="Auto"
                                         Binding="{Binding Index}"
@@ -140,9 +114,45 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Border>
-        <Border Grid.Row="1" Grid.Column="1" Classes="frame" HorizontalAlignment="Stretch" Margin="0,0,10,10">
+        <GridSplitter Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" />
+        <!-- Status bar -->
+        <Border Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="2"
+                HorizontalAlignment="Stretch" 
+                Classes="frame" >
             <Grid ColumnDefinitions="Auto,Auto,Auto">
                 <StackPanel Grid.Column="0" Orientation="Horizontal">
+                    <Grid ColumnDefinitions="Auto,Auto">
+                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                            <TextBlock VerticalAlignment="Center" Text="Average RTT:  " />
+                            <TextBlock VerticalAlignment="Center" Text="{Binding RoundTripTime}" />
+                        </StackPanel>
+                        <StackPanel Margin="10,0,0,0" Grid.Column="1" Orientation="Horizontal">
+                            <TextBlock VerticalAlignment="Center" Text="Hostname:  " />
+                            <TextBlock VerticalAlignment="Center" Text="{Binding Hostname}" />
+                        </StackPanel>
+                    </Grid>
+                    <Border Classes="frame">
+                        <Grid ColumnDefinitions="*, *, *"
+                              HorizontalAlignment="Stretch">
+                            <Button Grid.Column="0" Margin="0,0,10,0"
+                                    HorizontalAlignment="Stretch"
+                                    HorizontalContentAlignment="Center"
+                                    IsEnabled="{Binding IsStopped}"
+                                    Command="{Binding StartPing}"
+                                    Content="Start" />
+                            <Button Grid.Column="1" Margin="0,0,10,0"
+                                    HorizontalAlignment="Stretch"
+                                    HorizontalContentAlignment="Center"
+                                    IsEnabled="{Binding IsPinging}"
+                                    Command="{Binding StopPinging}"
+                                    Content="Stop" />
+                            <Button Grid.Column="2"
+                                    HorizontalAlignment="Stretch"
+                                    HorizontalContentAlignment="Center"
+                                    IsEnabled="{Binding IsStopped}"
+                                    Command="{Binding Reset}" Content="Reset" />
+                        </Grid>
+                    </Border>
                     <TextBlock VerticalAlignment="Center" Text="Successful:  " />
                     <TextBlock VerticalAlignment="Center" Foreground="ForestGreen" Text="{Binding SuccessfulPings}" />
                 </StackPanel>
@@ -154,25 +164,11 @@
                     <TextBlock VerticalAlignment="Center" Text="Packet Loss:  " />
                     <TextBlock VerticalAlignment="Center" Foreground="Crimson" Text="{Binding PacketLoss}" />
                 </StackPanel>
-            </Grid>
-        </Border>
-        <Border Grid.Row="2" Grid.Column="1" Classes="frame" HorizontalAlignment="Stretch" Margin="0,0,10,10">
-            <Grid ColumnDefinitions="Auto,Auto">
-                <StackPanel Grid.Column="0" Orientation="Horizontal">
-                    <TextBlock VerticalAlignment="Center" Text="Average RTT:  " />
-                    <TextBlock VerticalAlignment="Center" Text="{Binding RoundTripTime}" />
-                </StackPanel>
-                <StackPanel Margin="10,0,0,0" Grid.Column="1" Orientation="Horizontal">
-                    <TextBlock VerticalAlignment="Center" Text="Hostname:  " />
-                    <TextBlock VerticalAlignment="Center" Text="{Binding Hostname}" />
-                </StackPanel>
-            </Grid>
-        </Border>
-        <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Classes="frame" Margin="10,0,10,10">
                 <ProgressBar VerticalAlignment="Center" Opacity=".8" Margin="5"
                              Value="{Binding Progress}"
                              IsIndeterminate="{Binding IsIndeterminate}"
                              Maximum="{Binding Attempts}" />
+            </Grid>
         </Border>
     </Grid>
 </UserControl>

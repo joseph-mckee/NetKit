@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
@@ -93,7 +95,11 @@ public partial class IpConfigViewModel : ViewModelBase
 
     [ObservableProperty] private ObservableCollection<IpConfigurationProfileViewModel> _profiles;
     [ObservableProperty] private IpConfigurationProfileViewModel _selectedProfile;
-    
+
+    public IpConfigViewModel() : this(new IpConfigurationPageViewModel())
+    {
+    }
+
     public IpConfigViewModel(IpConfigurationPageViewModel ipConfigurationPageViewModel)
     {
         _profiles = ipConfigurationPageViewModel.IpConfigurationProfiles;
@@ -200,11 +206,16 @@ public partial class IpConfigViewModel : ViewModelBase
         if (PhysicalAddress != formattedMacAddress.ToString()) PhysicalAddress = formattedMacAddress.ToString();
 
         var ipProperties = networkInterface.GetIPProperties();
-        Addresses = new ObservableCollection<UnicastIPAddressInformation>(ipProperties.UnicastAddresses.Where(y => y.Address.AddressFamily == AddressFamily.InterNetwork));
-        DnsAddresses = new ObservableCollection<IPAddress>(ipProperties.DnsAddresses.Where(x => x.AddressFamily == AddressFamily.InterNetwork));
+        Addresses = new ObservableCollection<UnicastIPAddressInformation>(
+            ipProperties.UnicastAddresses.Where(y => y.Address.AddressFamily == AddressFamily.InterNetwork));
+        DnsAddresses =
+            new ObservableCollection<IPAddress>(
+                ipProperties.DnsAddresses.Where(x => x.AddressFamily == AddressFamily.InterNetwork));
         if (DnsSuffix != ipProperties.DnsSuffix) DnsSuffix = ipProperties.DnsSuffix;
-        GatewayAddresses = new ObservableCollection<GatewayIPAddressInformation>(ipProperties.GatewayAddresses.Where(x => x.Address.AddressFamily == AddressFamily.InterNetwork));
-        MulticastAddresses = new ObservableCollection<MulticastIPAddressInformation>(ipProperties.MulticastAddresses.Where(x => x.Address.AddressFamily == AddressFamily.InterNetwork));
+        GatewayAddresses = new ObservableCollection<GatewayIPAddressInformation>(
+            ipProperties.GatewayAddresses.Where(x => x.Address.AddressFamily == AddressFamily.InterNetwork));
+        MulticastAddresses = new ObservableCollection<MulticastIPAddressInformation>(
+            ipProperties.MulticastAddresses.Where(x => x.Address.AddressFamily == AddressFamily.InterNetwork));
         DhcpAddresses = ipProperties.DhcpServerAddresses;
         if (DynamicDnsEnabled != ipProperties.IsDynamicDnsEnabled) DynamicDnsEnabled = ipProperties.IsDynamicDnsEnabled;
         SubnetMask = new ObservableCollection<IPAddress>(Addresses.Select(x => x.IPv4Mask));
@@ -361,11 +372,43 @@ public partial class IpConfigViewModel : ViewModelBase
         var ipService = new IpConfigurationService((uint)Index);
         ipService.ApplyProfile(SelectedProfile);
     }
-    
+
     [RelayCommand]
     public void SetDhcpCommand()
     {
         var ipService = new IpConfigurationService((uint)Index);
         ipService.SetDhcp();
+    }
+
+    [RelayCommand]
+    public void ResetInterfaceCommand()
+    {
+        var baseDirectory = AppContext.BaseDirectory;
+        var iperfDirectory = Path.Combine(baseDirectory, "iperf\\iperf3.exe");
+        var startInfo = new ProcessStartInfo
+        {
+            FileName = iperfDirectory, // Change to "iperf" if using iperf2
+            Arguments = "-c ping.online.net -p 5208  --json",
+            RedirectStandardOutput = true,
+            UseShellExecute = false,
+            CreateNoWindow = true,
+        };
+
+        using var process = new Process();
+        process.StartInfo = startInfo;
+        try
+        {
+            process.Start();
+            var output = process.StandardOutput.ReadToEnd();
+            process.WaitForExit();
+
+            // Parse the JSON output as needed
+            Debug.WriteLine(output);
+        }
+        catch (Exception ex)
+        {
+            // Handle exceptions (e.g., iperf not installed)
+            Debug.WriteLine($"Error running iperf: {ex.Message}");
+        }
     }
 }

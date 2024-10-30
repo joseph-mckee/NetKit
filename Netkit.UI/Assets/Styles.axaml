@@ -8,6 +8,11 @@
                     <TextBlock Text="Text Block" />
                     <TextBox Text="Text Box" />
                     <SelectableTextBlock Text="Selectable Text Block" />
+                    <Grid ColumnDefinitions="*,Auto,*" RowDefinitions="10" HorizontalAlignment="Stretch">
+                        <Rectangle Grid.Column="0" Fill="Orange" />
+                        <GridSplitter Grid.Column="1"  />
+                        <Rectangle Grid.Column="2" Fill="DarkBlue" />
+                    </Grid>
                 </StackPanel>
             </Border>
         </Border>
@@ -116,6 +121,11 @@
         <Setter Property="Padding" Value="2" />
     </Style>
 
+    <Style Selector="GridSplitter">
+        <Setter Property="MinWidth" Value="5" />
+        <Setter Property="MinHeight" Value="5" />
+    </Style>
+    
     <Style Selector="MenuItem">
         <Setter Property="Padding" Value="5" />
     </Style>

@@ -62,4 +62,17 @@
         <ProjectReference Include="..\NetKit.Device.Management\NetKit.Device.Management.csproj"/>
         <ProjectReference Include="..\NetKit.Lib\NetKit.Lib.csproj"/>
     </ItemGroup>
+
+
+    <ItemGroup>
+      <None Remove="iperf\cygwin1.dll" />
+      <Content Include="iperf\cygwin1.dll">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+      <None Remove="iperf\iperf3.exe" />
+      <Content Include="iperf\iperf3.exe">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>

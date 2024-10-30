@@ -48,7 +48,7 @@
                     <Button Content="Set DHCP" Command="{Binding SetDhcpCommand}" />
                 </StackPanel>
                 <StackPanel Grid.Column="2" Orientation="Horizontal" >
-                    <Button Content="Reset Interface" />
+                    <Button Content="Reset Interface" Command="{Binding ResetInterfaceCommand}" />
                 </StackPanel>
             </Grid>
         </Border>
@@ -315,7 +315,7 @@
                             </Border>
                             <Border Grid.Column="2" Classes="frame">
                                 <StackPanel>
-                                    <Grid ColumnDefinitions="Auto,5,Auto">
+                                    <Grid ColumnDefinitions="Auto,*,Auto">
                                         <TextBlock HorizontalAlignment="Left"
                                                    Text="Outgoing Packets Discarded: " />
                                         <Rectangle Classes="connector" Grid.Column="1" />
