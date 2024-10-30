@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
@@ -141,6 +142,8 @@ public partial class PingPageViewModel : ViewModelBase, IPageViewModel
                 PingReplies?.Add(new PingReplyModel(reply, index + 1));
                 OnScrollToNewItemRequested();
                 ReplyTimes += reply.RoundTripTime;
+                var averageRtt = ((float)ReplyTimes / PingReplies!.Count).ToString("N");
+                RoundTripTime = $"{averageRtt}ms";
                 Progress++;
             });
         }

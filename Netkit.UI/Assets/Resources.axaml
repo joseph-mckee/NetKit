@@ -15,6 +15,12 @@
         <ResourceDictionary x:Key="Dark">
             <Color x:Key="AcrylicTintColor">#000000</Color>
         </ResourceDictionary>
+        <ResourceDictionary x:Key="Light">
+            <Color x:Key="PrimaryBackground">#FFFFFF</Color>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+            <Color x:Key="PrimaryBackground">#3F000000</Color>
+        </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 
     <!-- CheckBox -->
