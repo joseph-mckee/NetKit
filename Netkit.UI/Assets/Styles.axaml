@@ -122,8 +122,8 @@
     </Style>
 
     <Style Selector="GridSplitter">
-        <Setter Property="MinWidth" Value="5" />
-        <Setter Property="MinHeight" Value="5" />
+        <Setter Property="MinWidth" Value="2" />
+        <Setter Property="MinHeight" Value="2" />
     </Style>
     
     <Style Selector="MenuItem">

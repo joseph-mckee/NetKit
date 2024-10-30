@@ -9,6 +9,8 @@
     <Design.DataContext>
         <vm:PingPageViewModel />
     </Design.DataContext>
+    <Design.DesignStyle>
+    </Design.DesignStyle>
     <UserControl.Styles>
         <Style Selector="TextBox">
             <Setter Property="IsReadOnly" Value="{Binding IsPinging}" />
@@ -27,13 +29,14 @@
         </Style>
     </UserControl.Styles>
     <Grid ColumnDefinitions="250,Auto,*"
-          RowDefinitions="*,Auto,Auto">
+          RowDefinitions="*,Auto,Auto,Auto,Auto">
         <!-- Ping options -->
-        <Border Grid.Column="0" Grid.Row="0"
-                Classes="frame">
+        <Grid Grid.Column="0" Grid.Row="0"
+              ColumnDefinitions="*"
+              RowDefinitions="*,Auto"
+              Margin="10">
             <ScrollViewer>
-                <StackPanel Margin="5"
-                            Spacing="5">
+                <StackPanel Spacing="5">
                     <StackPanel>
                         <TextBlock Text="Host:" />
                         <TextBox Text="{Binding Host}"
@@ -86,89 +89,103 @@
                               HorizontalAlignment="Stretch" />
                 </StackPanel>
             </ScrollViewer>
-        </Border>
+            <Grid Grid.Row="1" ColumnDefinitions="*,5,*,5,*"
+                  HorizontalAlignment="Stretch">
+                <Button Grid.Column="0"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
+                        IsEnabled="{Binding IsStopped}"
+                        Command="{Binding StartPing}"
+                        Content="Start" />
+                <Button Grid.Column="2"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
+                        IsEnabled="{Binding IsPinging}"
+                        Command="{Binding StopPinging}"
+                        Content="Stop" />
+                <Button Grid.Column="4"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
+                        IsEnabled="{Binding IsStopped}"
+                        Command="{Binding Reset}" Content="Reset" />
+            </Grid>
+        </Grid>
         <GridSplitter Grid.Column="1" Grid.Row="0" />
         <!-- Ping results -->
-        <Border Grid.Column="2" Grid.Row="0"
-                ClipToBounds="True"
-                Classes="frame">
-            <DataGrid ItemsSource="{Binding PingReplies}"
-                      CanUserResizeColumns="True"
-                      CanUserSortColumns="False"
-                      GridLinesVisibility="All"
-                      IsReadOnly="True"
-                      Name="ReplyGrid">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Width="Auto"
-                                        Binding="{Binding Index}"
-                                        Header="#" />
-                    <DataGridTextColumn Width="Auto"
-                                        Binding="{Binding IpAddress}"
-                                        Header="Reply From" />
-                    <DataGridTextColumn Width="Auto"
-                                        Binding="{Binding RoundtripTime}"
-                                        Header="RTT" />
-                    <DataGridTextColumn Width="Auto"
-                                        Binding="{Binding Status}"
-                                        Header="Status" />
-                </DataGrid.Columns>
-            </DataGrid>
-        </Border>
+        <DataGrid Grid.Column="2" Grid.Row="0" ItemsSource="{Binding PingReplies}"
+                  CanUserResizeColumns="True"
+                  CanUserSortColumns="False"
+                  GridLinesVisibility="All"
+                  IsReadOnly="True"
+                  Name="ReplyGrid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="Auto"
+                                    Binding="{Binding Index}"
+                                    Header="#" />
+                <DataGridTextColumn Width="Auto"
+                                    Binding="{Binding IpAddress}"
+                                    Header="Reply From" />
+                <DataGridTextColumn Width="Auto"
+                                    Binding="{Binding RoundtripTime}"
+                                    Header="RTT" />
+                <DataGridTextColumn Width="Auto"
+                                    Binding="{Binding Status}"
+                                    Header="Status" />
+            </DataGrid.Columns>
+        </DataGrid>
         <GridSplitter Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" />
         <!-- Status bar -->
-        <Border Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="2"
-                HorizontalAlignment="Stretch" 
-                Classes="frame" >
-            <Grid ColumnDefinitions="Auto,Auto,Auto">
-                <StackPanel Grid.Column="0" Orientation="Horizontal">
-                    <Grid ColumnDefinitions="Auto,Auto">
-                        <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <TextBlock VerticalAlignment="Center" Text="Average RTT:  " />
-                            <TextBlock VerticalAlignment="Center" Text="{Binding RoundTripTime}" />
-                        </StackPanel>
-                        <StackPanel Margin="10,0,0,0" Grid.Column="1" Orientation="Horizontal">
-                            <TextBlock VerticalAlignment="Center" Text="Hostname:  " />
-                            <TextBlock VerticalAlignment="Center" Text="{Binding Hostname}" />
-                        </StackPanel>
-                    </Grid>
-                    <Border Classes="frame">
-                        <Grid ColumnDefinitions="*, *, *"
-                              HorizontalAlignment="Stretch">
-                            <Button Grid.Column="0" Margin="0,0,10,0"
-                                    HorizontalAlignment="Stretch"
-                                    HorizontalContentAlignment="Center"
-                                    IsEnabled="{Binding IsStopped}"
-                                    Command="{Binding StartPing}"
-                                    Content="Start" />
-                            <Button Grid.Column="1" Margin="0,0,10,0"
-                                    HorizontalAlignment="Stretch"
-                                    HorizontalContentAlignment="Center"
-                                    IsEnabled="{Binding IsPinging}"
-                                    Command="{Binding StopPinging}"
-                                    Content="Stop" />
-                            <Button Grid.Column="2"
-                                    HorizontalAlignment="Stretch"
-                                    HorizontalContentAlignment="Center"
-                                    IsEnabled="{Binding IsStopped}"
-                                    Command="{Binding Reset}" Content="Reset" />
-                        </Grid>
-                    </Border>
-                    <TextBlock VerticalAlignment="Center" Text="Successful:  " />
-                    <TextBlock VerticalAlignment="Center" Foreground="ForestGreen" Text="{Binding SuccessfulPings}" />
-                </StackPanel>
-                <StackPanel Margin="10,0,0,0" Grid.Column="1" Orientation="Horizontal">
-                    <TextBlock VerticalAlignment="Center" Text="Failed:  " />
-                    <TextBlock VerticalAlignment="Center" Foreground="Crimson" Text="{Binding FailedPings}" />
-                </StackPanel>
-                <StackPanel Margin="10,0,0,0" Grid.Column="2" Orientation="Horizontal">
-                    <TextBlock VerticalAlignment="Center" Text="Packet Loss:  " />
-                    <TextBlock VerticalAlignment="Center" Foreground="Crimson" Text="{Binding PacketLoss}" />
-                </StackPanel>
-                <ProgressBar VerticalAlignment="Center" Opacity=".8" Margin="5"
-                             Value="{Binding Progress}"
-                             IsIndeterminate="{Binding IsIndeterminate}"
-                             Maximum="{Binding Attempts}" />
-            </Grid>
-        </Border>
+        <Grid Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2"
+              ColumnDefinitions="*,Auto,*,Auto,*,Auto,*">
+            <Grid.Styles>
+                <Style Selector="StackPanel">
+                    <Setter Property="Margin" Value="5" />
+                </Style>
+            </Grid.Styles>
+            <StackPanel Grid.Column="0"
+                        Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center"
+                           Text="Average RTT:  " />
+                <TextBlock Text="{Binding RoundTripTime}"
+                           VerticalAlignment="Center" />
+            </StackPanel>
+            <GridSplitter Grid.Column="1" />
+            <StackPanel Grid.Column="2"
+                        Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center"
+                           Text="Hostname:  " />
+                <TextBlock Text="{Binding Hostname}"
+                           VerticalAlignment="Center" />
+            </StackPanel>
+            <GridSplitter Grid.Column="3" />
+            <StackPanel Grid.Column="4" Grid.Row="0"
+                        Orientation="Horizontal"
+                        Spacing="5">
+                <TextBlock VerticalAlignment="Center"
+                           Text="Pass/Fail:" />
+                <TextBlock Text="{Binding SuccessfulPings}" 
+                           VerticalAlignment="Center"
+                           Foreground="ForestGreen" />
+                <TextBlock Text="{Binding FailedPings}"
+                           VerticalAlignment="Center"
+                           Foreground="Crimson" />
+            </StackPanel>
+            <GridSplitter Grid.Column="5" />
+            <StackPanel Grid.Column="6" Grid.Row="0" 
+                        Orientation="Horizontal" 
+                        Spacing="5">
+                <TextBlock VerticalAlignment="Center" 
+                           Text="Packet Loss:" />
+                <TextBlock Text="{Binding PacketLoss}" 
+                           VerticalAlignment="Center"
+                           Foreground="Crimson" />
+
+            </StackPanel>
+        </Grid>
+        <GridSplitter Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3"></GridSplitter>
+        <ProgressBar Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4" VerticalAlignment="Center" Opacity=".8"
+                     Value="{Binding Progress}"
+                     IsIndeterminate="{Binding IsIndeterminate}"
+                     Maximum="{Binding Attempts}" />
     </Grid>
 </UserControl>
