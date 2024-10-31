@@ -9,41 +9,37 @@
     <Design.DataContext>
         <pageViewModels:DnsPageViewModel />
     </Design.DataContext>
-        <Grid RowDefinitions="Auto, *" Margin="0">
-            <Border Classes="frame" Margin="10 10 10 0 ">
-                <Grid ColumnDefinitions="Auto,*,Auto">
-                    <StackPanel Grid.Column="0" Margin="10 0 0 0" Orientation="Horizontal"
-                                HorizontalAlignment="Right" Spacing="10">
-                        <TextBlock VerticalAlignment="Center" Text="Filter:" />
-                        <TextBox MinWidth="200" MaxWidth="500" Text="{Binding FilterText}"
-                                 Watermark="Enter filter text.." />
-                    </StackPanel>
-                    <Button Grid.Column="2" Command="{Binding FlushCacheCommand}"
-                            Content="Flush DNS Cache" />
-                </Grid>
-            </Border>
-            <Border Grid.Row="1" Classes="frame" Margin="10">
-                <DataGrid ItemsSource="{Binding FilteredDnsEntries}" GridLinesVisibility="All"
-                          CanUserReorderColumns="True" CanUserResizeColumns="True" CanUserSortColumns="True"
-                          IsReadOnly="True">
-                    <DataGrid.Styles>
-                        <Style Selector="DataGridCell">
-                            <!-- <Setter Property="HorizontalContentAlignment" Value="Center" /> -->
-                        </Style>
-                        <Style Selector="DataGridColumnHeader">
-                            <!-- <Setter Property="HorizontalContentAlignment" Value="Center" /> -->
-                        </Style>
-                    </DataGrid.Styles>
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Width="2*" Binding="{Binding Entry}" Header="Entry" />
-                        <DataGridTextColumn Width="2*" Binding="{Binding Name}" Header="Name" />
-                        <DataGridTextColumn Width="*" Binding="{Binding Type}" Header="Type" />
-                        <DataGridTextColumn Width="*" Binding="{Binding Status}" Header="Status" />
-                        <DataGridTextColumn Width="*" Binding="{Binding Section}" Header="Section" />
-                        <!-- <DataGridTextColumn Width="*" Binding="{Binding TimeToLive}" Header="TTL" /> -->
-                        <DataGridTextColumn Width="2*" Binding="{Binding Data}" Header="Data" />
-                    </DataGrid.Columns>
-                </DataGrid>
-            </Border>
+    <Grid RowDefinitions="Auto,Auto,*" Margin="0">
+        <Grid ColumnDefinitions="Auto,*,Auto">
+            <StackPanel Grid.Column="0" Margin="10" Orientation="Horizontal"
+                        HorizontalAlignment="Right" Spacing="10">
+                <TextBlock VerticalAlignment="Center" Text="Filter:" />
+                <TextBox MinWidth="200" MaxWidth="500" Text="{Binding FilterText}"
+                         Watermark="Enter filter text.." />
+            </StackPanel>
+            <Button Grid.Column="2" Margin="10" Command="{Binding FlushCacheCommand}"
+                    Content="Flush DNS Cache" />
         </Grid>
+        <GridSplitter Grid.Row="1" />
+        <DataGrid Grid.Row="2" ItemsSource="{Binding FilteredDnsEntries}" GridLinesVisibility="All"
+                  CanUserReorderColumns="True" CanUserResizeColumns="True" CanUserSortColumns="True"
+                  IsReadOnly="True">
+            <DataGrid.Styles>
+                <Style Selector="DataGridCell">
+                    <!-- <Setter Property="HorizontalContentAlignment" Value="Center" /> -->
+                </Style>
+                <Style Selector="DataGridColumnHeader">
+                    <!-- <Setter Property="HorizontalContentAlignment" Value="Center" /> -->
+                </Style>
+            </DataGrid.Styles>
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="Auto" Binding="{Binding Entry}" Header="Entry" />
+                <DataGridTextColumn Width="Auto" Binding="{Binding Name}" Header="Name" />
+                <DataGridTextColumn Width="Auto" Binding="{Binding Type}" Header="Type" />
+                <!-- <DataGridTextColumn Width="Auto" Binding="{Binding Section}" Header="Section" /> -->
+                <!-- <DataGridTextColumn Width="*" Binding="{Binding TimeToLive}" Header="TTL" /> -->
+                <DataGridTextColumn Width="Auto" Binding="{Binding Data}" Header="Data" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
 </UserControl>

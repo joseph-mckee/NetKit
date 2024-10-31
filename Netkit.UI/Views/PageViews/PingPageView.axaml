@@ -36,7 +36,7 @@
               RowDefinitions="*,Auto"
               Margin="10">
             <ScrollViewer>
-                <StackPanel Spacing="10">
+                <StackPanel Spacing="5">
                     <StackPanel>
                         <TextBlock Text="Host:" />
                         <TextBox Text="{Binding Host}"
@@ -100,7 +100,13 @@
                         <ComboBox SelectedItem="{Binding SelectedInterface}"
                                   ItemsSource="{Binding NetworkInterfaces}"
                                   SelectedIndex="{Binding SelectedIndex}"
-                                  HorizontalAlignment="Stretch" />
+                                  HorizontalAlignment="Stretch">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" VerticalAlignment="Center" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>

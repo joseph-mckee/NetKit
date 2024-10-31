@@ -19,7 +19,7 @@
             <Color x:Key="PrimaryBackground">#FFFFFF</Color>
         </ResourceDictionary>
         <ResourceDictionary x:Key="Dark">
-            <Color x:Key="PrimaryBackground">#3F000000</Color>
+            <Color x:Key="PrimaryBackground">#1F000000</Color>
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 

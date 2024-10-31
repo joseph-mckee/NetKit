@@ -54,10 +54,6 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
 
-    <Style Selector="ComboBoxItem">
-        <Setter Property="Padding" Value="5" />
-    </Style>
-
     <Style Selector="ContextMenu">
         <Setter Property="ClipToBounds" Value="True" />
         <Setter Property="MinHeight" Value="0" />
