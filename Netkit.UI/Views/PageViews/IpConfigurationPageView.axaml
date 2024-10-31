@@ -41,31 +41,26 @@
                 <view:IpConfigView DataContext="{Binding IpConfigViewModel}" />
             </TabItem>
             <TabItem Header="Profiles">
-                <ScrollViewer Margin="10 0" VerticalScrollBarVisibility="Auto">
-                    <!-- Profiles Container -->
-                    <ItemsControl ItemsSource="{Binding IpConfigurationProfiles}">
-                        <ItemsControl.Styles>
-                            <Style Selector="TextBox">
-                                <Setter Property="FontSize" Value="12" />
-                                <Setter Property="Padding" Value="5 0" />
-                                <Setter Property="TextAlignment" Value="Center" />
-                                <Setter Property="VerticalContentAlignment" Value="Center" />
-                            </Style>
-                            <Style Selector="SelectableTextBlock">
-                                <Setter Property="FontSize" Value="12" />
-                                <Setter Property="Padding" Value="0 8 0 8" />
-                                <Setter Property="TextAlignment" Value="Center" />
-                                <Setter Property="VerticalAlignment" Value="Center" />
-                            </Style>
-                        </ItemsControl.Styles>
-                        <!-- This template should be moved to its own view. -->
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate DataType="{x:Type viewModels:IpConfigurationProfileViewModel}">
-                                <view:IpConfigurationProfileView Margin=" 0 0 0 5" />
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </ScrollViewer>
+                <Grid RowDefinitions="Auto,Auto,*">
+                    <Grid Grid.Row="0"></Grid>
+                    <GridSplitter Grid.Row="1" />
+                    <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                        <!-- Profiles Container -->
+                        <ItemsControl ItemsSource="{Binding IpConfigurationProfiles}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <!-- This template should be moved to its own view. -->
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="{x:Type viewModels:IpConfigurationProfileViewModel}">
+                                    <view:IpConfigurationProfileView />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>

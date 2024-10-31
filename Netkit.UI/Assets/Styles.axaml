@@ -13,6 +13,7 @@
                         <GridSplitter Grid.Column="1"  />
                         <Rectangle Grid.Column="2" Fill="DarkBlue" />
                     </Grid>
+                    <Expander Header="Expander" />
                 </StackPanel>
             </Border>
         </Border>
@@ -98,10 +99,14 @@
     </Style>
 
     <Style Selector="Expander">
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" /> 
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="MinHeight" Value="32" />
+        <Setter Property="CornerRadius" Value="0" />
+    </Style>
+    <Style Selector="Expander:expanded:down /template/ Border#ExpanderContent">
+        <Setter Property="CornerRadius" Value="0" />
     </Style>
     <Style Selector="Expander > DockPanel > ToggleButton TextBlock">
         <Setter Property="FontSize" Value="14" />

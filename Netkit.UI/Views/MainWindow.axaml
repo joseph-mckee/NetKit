@@ -13,7 +13,7 @@
         FontSize="12"
         Background="Transparent"
         TransparencyLevelHint="AcrylicBlur"
-        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaToDecorationsHint="False"
         RequestedThemeVariant="{Binding Theme}">
     <Design.DataContext>
         <vm:MainWindowViewModel />
@@ -42,7 +42,7 @@
                        DisplayMode="CompactInline"
                        Background="#00000000"
                        PaneBackground="#00000000"
-                       Margin="0 32 0 0">
+                       Margin="0 8 0 0">
                 <SplitView.Pane>
                     <StackPanel Spacing="5"
                                 Margin="0">

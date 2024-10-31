@@ -58,7 +58,7 @@
     <x:Double x:Key="DataGridSortIconMinWidth">20</x:Double>
 
     <!-- Expander -->
-    <SolidColorBrush x:Key="ExpanderHeaderBackground" Color="Transparent" />
+    <!-- <SolidColorBrush x:Key="ExpanderHeaderBackground" Color="#0F0F0F" /> -->
     <SolidColorBrush x:Key="ExpanderHeaderBackgroundPointerOver" Color="#3F000000" />
     <SolidColorBrush x:Key="ExpanderHeaderBackgroundPressed" Color="#6F000000" />
     <x:Double x:Key="ExpanderChevronButtonSize">24</x:Double>

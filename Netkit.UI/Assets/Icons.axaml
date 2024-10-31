@@ -17,6 +17,9 @@
             <StreamGeometry x:Key="ScanIcon">
                 M19.778,4.222A11,11,0,1,1,12,1a1,1,0,0,1,1,1v8.277a2,2,0,1,1-2,0V7.621a4.49,4.49,0,1,0,4.182,1.2A1,1,0,0,1,16.6,7.4,6.505,6.505,0,1,1,11,5.585V3.055a9,9,0,1,0,7.364,2.581,1,1,0,1,1,1.414-1.414Z
             </StreamGeometry>
+            <StreamGeometry x:Key="AddIcon">
+                M11.25 12.75V18H12.75V12.75H18V11.25H12.75V6H11.25V11.25H6V12.75H11.25Z
+            </StreamGeometry>
             <DrawingImage x:Key="EditIcon">
                 <DrawingImage.Drawing>
                     <GeometryDrawing Brush="Transparent">
