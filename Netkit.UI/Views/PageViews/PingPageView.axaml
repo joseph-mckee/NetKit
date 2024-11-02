@@ -157,7 +157,7 @@
         </DataGrid>
         <GridSplitter Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" />
         <!-- Status bar -->
-        <Grid Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4"
+        <Grid Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2"
               ColumnDefinitions=".3*,Auto,.3*,Auto,.4*,Auto,1*">
             <Grid.Styles>
                 <Style Selector="StackPanel">
@@ -205,7 +205,7 @@
             </StackPanel>
         </Grid>
         <GridSplitter Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3"></GridSplitter>
-        <ProgressBar Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" VerticalAlignment="Center" Opacity=".8"
+        <ProgressBar Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4" VerticalAlignment="Center" Opacity=".8"
                      Value="{Binding Progress}"
                      IsIndeterminate="{Binding IsIndeterminate}"
                      Maximum="{Binding Attempts}" />

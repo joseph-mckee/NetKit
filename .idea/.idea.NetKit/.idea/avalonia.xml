@@ -21,18 +21,20 @@
         <entry key="NetKit.UI/Views/PageViews/TraceRoutePageView.axaml" value="NetKit.UI/NetKit.UI.csproj" />
         <entry key="Netkit.UI/App.axaml" value="NetKit.UI/NetKit.UI.csproj" />
         <entry key="Netkit.UI/Assets/CustomStyles.axaml" value="Netkit.UI/Netkit.UI.csproj" />
-        <entry key="Netkit.UI/Assets/Icons.axaml" value="Netkit.UI/Netkit.UI.csproj" />
+        <entry key="Netkit.UI/Assets/Icons.axaml" value="NetKit.UI/NetKit.UI.csproj" />
         <entry key="Netkit.UI/Assets/Resources.axaml" value="NetKit.UI/NetKit.UI.csproj" />
-        <entry key="Netkit.UI/Assets/Styles.axaml" value="Netkit.UI/Netkit.UI.csproj" />
+        <entry key="Netkit.UI/Assets/Styles.axaml" value="NetKit.UI/NetKit.UI.csproj" />
         <entry key="Netkit.UI/Views/HomePageView.axaml" value="Netkit.UI/Netkit.UI.csproj" />
-        <entry key="Netkit.UI/Views/InterfaceConfigurationView.axaml" value="Netkit.UI/Netkit.UI.csproj" />
+        <entry key="Netkit.UI/Views/InterfaceConfigurationView.axaml" value="NetKit.UI/NetKit.UI.csproj" />
         <entry key="Netkit.UI/Views/IpConfigPageView.axaml" value="Netkit.UI/Netkit.UI.csproj" />
+        <entry key="Netkit.UI/Views/IpConfigView.axaml" value="NetKit.UI/NetKit.UI.csproj" />
         <entry key="Netkit.UI/Views/IpConfigurationInterfacesView.axaml" value="Netkit.UI/Netkit.UI.csproj" />
-        <entry key="Netkit.UI/Views/IpConfigurationProfileView.axaml" value="Netkit.UI/Netkit.UI.csproj" />
+        <entry key="Netkit.UI/Views/IpConfigurationProfileView.axaml" value="NetKit.UI/NetKit.UI.csproj" />
         <entry key="Netkit.UI/Views/IpConfigurationProfilesView.axaml" value="Netkit.UI/Netkit.UI.csproj" />
         <entry key="Netkit.UI/Views/MainWindow.axaml" value="NetKit.UI/NetKit.UI.csproj" />
-        <entry key="Netkit.UI/Views/PageViews/HomePageView.axaml" value="Netkit.UI/Netkit.UI.csproj" />
-        <entry key="Netkit.UI/Views/PageViews/IpConfigurationPageView.axaml" value="Netkit.UI/Netkit.UI.csproj" />
+        <entry key="Netkit.UI/Views/PageViews/DnsPageView.axaml" value="NetKit.UI/NetKit.UI.csproj" />
+        <entry key="Netkit.UI/Views/PageViews/HomePageView.axaml" value="NetKit.UI/NetKit.UI.csproj" />
+        <entry key="Netkit.UI/Views/PageViews/IpConfigurationPageView.axaml" value="NetKit.UI/NetKit.UI.csproj" />
         <entry key="Netkit.UI/Views/PageViews/IpConfigurationProfileView.axaml" value="Netkit.UI/Netkit.UI.csproj" />
         <entry key="Netkit.UI/Views/PageViews/PingPageView.axaml" value="NetKit.UI/NetKit.UI.csproj" />
         <entry key="Netkit.UI/Views/PageViews/ProfileView.axaml" value="Netkit.UI/Netkit.UI.csproj" />

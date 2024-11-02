@@ -13,22 +13,6 @@
         <pageViewModels:IpConfigurationPageViewModel />
     </Design.DataContext>
     <Grid ColumnDefinitions="*">
-        <Canvas ZIndex="1">
-            <Canvas.Styles>
-                <Style Selector="Button AccessText">
-                    <Setter Property="HorizontalAlignment" Value="Center" />
-                    <Setter Property="VerticalAlignment" Value="Center" />
-                </Style>
-            </Canvas.Styles>
-            <StackPanel Canvas.Top="10" Canvas.Right="10"
-                        Orientation="Horizontal">
-                <Button Command="{Binding AddProfileCommand}"
-                        Height="32"
-                        Width="32"
-                        FontSize="20"
-                        Content="+" />
-            </StackPanel>
-        </Canvas>
         <TabControl Grid.Column="0"
                     Padding="0">
             <TabControl.Styles>
@@ -38,13 +22,15 @@
             </TabControl.Styles>
             <TabItem Header="Interfaces">
                 <!-- Interfaces Container -->
-                <view:IpConfigView DataContext="{Binding IpConfigViewModel}" />
+                <Grid RowDefinitions="Auto,*">
+                    <GridSplitter Grid.Row="0" />
+                    <view:IpConfigView Grid.Row="1" DataContext="{Binding IpConfigViewModel}" />
+                </Grid>
             </TabItem>
             <TabItem Header="Profiles">
-                <Grid RowDefinitions="Auto,Auto,*">
-                    <Grid Grid.Row="0"></Grid>
-                    <GridSplitter Grid.Row="1" />
-                    <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                <Grid RowDefinitions="Auto,*">
+                    <GridSplitter Grid.Row="0" />
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
                         <!-- Profiles Container -->
                         <ItemsControl ItemsSource="{Binding IpConfigurationProfiles}">
                             <ItemsControl.ItemsPanel>
