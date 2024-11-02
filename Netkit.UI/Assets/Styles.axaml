@@ -185,6 +185,7 @@
 
     <Style Selector="ToggleButton#ExpanderHeader">
         <Setter Property="MinHeight" Value="32" />
+        <Setter Property="Background" Value="#0F000000" />
         <Setter Property="Padding" Value="5 0 0 0" />
     </Style>
 </Styles>
