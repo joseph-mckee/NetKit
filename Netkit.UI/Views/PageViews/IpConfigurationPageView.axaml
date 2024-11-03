@@ -30,8 +30,16 @@
             <TabItem Header="Profiles">
                 <Grid RowDefinitions="Auto,Auto,Auto,*">
                     <GridSplitter Grid.Row="0" />
-                    <Grid Grid.Row="1" Margin="10" HorizontalAlignment="Right">
-                        <Button Content="Add"></Button>
+                    <Grid Grid.Row="1"
+                          ColumnDefinitions="*,Auto"
+                          Margin="10">
+                        <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="5">
+                            <TextBlock VerticalAlignment="Center" Text="Filter Profiles:" />
+                            <TextBox Watermark="Enter filter text..." />
+                        </StackPanel>
+                        <Button Grid.Column="1"
+                                Command="{Binding AddProfileCommand}"
+                                Content="Add" />
                     </Grid>
                     <GridSplitter Grid.Row="2" />
                     <ScrollViewer Grid.Row="3" VerticalScrollBarVisibility="Auto">
