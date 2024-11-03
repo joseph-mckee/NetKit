@@ -322,7 +322,13 @@ public partial class IpConfigViewModel : ViewModelBase
             .OrderBy(o => o.GetIPStatistics().BytesReceived).Reverse().ToList();
         var comparedInterfaces = new ObservableCollection<InterfaceModel>();
         foreach (var networkInterface in networkInterfaces)
-            comparedInterfaces.Add(new InterfaceModel(networkInterface));
+        {
+            var model = new InterfaceModel(networkInterface);
+            if (model.IpEnabled)
+            {
+                comparedInterfaces.Add(model);
+            }
+        }
 
         if (InterfaceModels.Count < comparedInterfaces.Count)
             foreach (var model in comparedInterfaces)
