@@ -27,7 +27,7 @@
     </UserControl.DataTemplates>
     <Grid RowDefinitions="Auto,Auto,*,Auto,Auto">
         <Grid Grid.Row="0"
-              ColumnDefinitions="Auto, *, Auto">
+              ColumnDefinitions="Auto,*, Auto">
             <StackPanel Grid.Column="0" Margin="10" Orientation="Horizontal" Spacing="5">
                 <TextBlock Text="Select Profile:" VerticalAlignment="Center" />
                 <ComboBox ItemsSource="{Binding Profiles}"
@@ -232,7 +232,7 @@
                                                   ItemsSource="{Binding DnsAddresses}" />
                                 </Grid>
                                 <Grid RowDefinitions="Auto,*"
-                                      ColumnDefinitions="Auto,*,Auto">
+                                      ColumnDefinitions="Auto,*,Auto" IsVisible="{Binding DhcpEnabled}">
                                     <TextBlock HorizontalAlignment="Left"
                                                Text="DHCP Servers: " />
                                     <Rectangle Classes="connector" Grid.Column="1" Grid.Row="0" />
@@ -347,6 +347,7 @@
                 </Expander>
                 <Expander HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
                           ClipToBounds="False"
+                          IsVisible="{Binding HasArp}"
                           IsExpanded="{Binding IsArpTableExpanded}">
                     <Expander.Header>
                         <Grid HorizontalAlignment="Stretch" ColumnDefinitions="Auto, *, Auto">
@@ -428,6 +429,7 @@
                         <!-- </StackPanel> -->
                 </Expander>
                 <Expander HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                          IsVisible="{Binding HasRoutes}"
                           IsExpanded="{Binding IsRouteTableExpanded}">
                     <Expander.HeaderTemplate>
                         <DataTemplate>
