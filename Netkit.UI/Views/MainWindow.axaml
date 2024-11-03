@@ -8,7 +8,7 @@
         x:Class="NetKit.UI.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico" Title="NetKit"
-        Width="800" MinWidth="800" Height="600" MinHeight="600"
+        Width="1280" MinWidth="800" Height="720" MinHeight="600"
         FontFamily="Segoe UI"
         FontSize="12"
         Background="Transparent"
