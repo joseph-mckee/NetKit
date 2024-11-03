@@ -30,16 +30,7 @@ public partial class ScanPageViewModel : ViewModelBase, IPageViewModel
     private CancellationTokenSource? _cancellationTokenSource;
     [ObservableProperty] private string _elapsed = "00:00:00";
 
-    [ObservableProperty] private ObservableCollection<ScannedHostModel> _filteredScannedHosts =
-    [
-        new ScannedHostModel
-        {
-            Hostname = "guardian.techkee.home",
-            IpAddress = "172.16.12.1",
-            MacAddress = "7C:5A:1C:D9:4E:CC",
-            Vendor = "Sophos"
-        }
-    ];
+    [ObservableProperty] private ObservableCollection<ScannedHostModel> _filteredScannedHosts = [];
 
     [ObservableProperty] private int _goal;
     [ObservableProperty] private bool _isScanning;
