@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Net.NetworkInformation;
+using NetKit.Device.Management.DeviceConfiguration.Network;
 using NetKit.Lib.IP;
 
 namespace NetKit.UI.Models;
@@ -23,8 +25,19 @@ public class InterfaceModel
         }
 
         Metric = Route.GetMetric(netInt);
+        try
+        {
+            var conf = new NetworkAdapterConfiguration((uint)Index);
+            IpEnabled = conf.Properties.IpEnabled;
+        }
+        catch (Exception e)
+        {
+            IpEnabled = false;
+        }
     }
 
+    public bool IpEnabled { get; set; }
+    
     public string? Name { get; init; }
     public string? Description { get; init; }
     public string? IpAddress { get; init; }
