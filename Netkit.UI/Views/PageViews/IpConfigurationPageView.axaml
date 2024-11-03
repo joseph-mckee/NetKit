@@ -28,9 +28,13 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Profiles">
-                <Grid RowDefinitions="Auto,*">
+                <Grid RowDefinitions="Auto,Auto,Auto,*">
                     <GridSplitter Grid.Row="0" />
-                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                    <Grid Grid.Row="1" Margin="10" HorizontalAlignment="Right">
+                        <Button Content="Add"></Button>
+                    </Grid>
+                    <GridSplitter Grid.Row="2" />
+                    <ScrollViewer Grid.Row="3" VerticalScrollBarVisibility="Auto">
                         <!-- Profiles Container -->
                         <ItemsControl ItemsSource="{Binding IpConfigurationProfiles}">
                             <ItemsControl.ItemsPanel>

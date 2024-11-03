@@ -39,6 +39,7 @@
         <entry key="Netkit.UI/Views/PageViews/PingPageView.axaml" value="NetKit.UI/NetKit.UI.csproj" />
         <entry key="Netkit.UI/Views/PageViews/ProfileView.axaml" value="Netkit.UI/Netkit.UI.csproj" />
         <entry key="Netkit.UI/Views/PageViews/ScanPageView.axaml" value="Netkit.UI/Netkit.UI.csproj" />
+        <entry key="Netkit.UI/Views/PageViews/TraceRoutePageView.axaml" value="NetKit.UI/NetKit.UI.csproj" />
         <entry key="Netkit.UI/Views/PingPageView.axaml" value="Netkit.UI/Netkit.UI.csproj" />
       </map>
     </option>
