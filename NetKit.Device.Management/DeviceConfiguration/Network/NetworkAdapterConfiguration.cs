@@ -1,19 +1,30 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Management;
+using NetKit.Device.Management.DeviceConfiguration.Network.Models;
 
 namespace NetKit.Device.Management.DeviceConfiguration.Network;
 
 [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
-public class NetworkAdapterConfiguration(uint interfaceIndex) : IDisposable
+public class NetworkAdapterConfiguration : IDisposable
 {
-    private readonly ManagementObject _interfaceObject = LoadInterface(interfaceIndex)
-                                                         ?? throw new ArgumentException(
-                                                             $"No network adapter found with InterfaceIndex {interfaceIndex}.");
+    private readonly ManagementObject _interfaceObject;
+
+    public NetworkAdapterConfigurationModel Properties { get; set; }
 
     private bool _disposed;
-    public uint InterfaceIndex { get; } = interfaceIndex;
+    public uint InterfaceIndex { get; }
 
-    private static ManagementObject? LoadInterface(uint interfaceIndex)
+
+    public NetworkAdapterConfiguration(uint interfaceIndex)
+    {
+        _interfaceObject = LoadInterface(interfaceIndex)
+                           ?? throw new ArgumentException(
+                               $"No network adapter found with InterfaceIndex {interfaceIndex}.");
+        InterfaceIndex = interfaceIndex;
+        Properties = new NetworkAdapterConfigurationModel(_interfaceObject);
+    }
+
+    private ManagementObject? LoadInterface(uint interfaceIndex)
     {
         using var managementClass = new ManagementClass("Win32_NetworkAdapterConfiguration");
         var managementObjectCollection = managementClass.GetInstances();
