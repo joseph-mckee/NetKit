@@ -3,6 +3,8 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using NetKit.UI.Models;
 using NetKit.UI.Services;
+using System;
+using System.Linq;
 
 namespace NetKit.UI.ViewModels.PageViewModels;
 
@@ -17,6 +19,11 @@ public partial class IpConfigurationPageViewModel : ViewModelBase, IPageViewMode
     [
     ];
 
+    [ObservableProperty]
+    private ObservableCollection<IpConfigurationProfileViewModel> _filteredIpConfigurationProfiles = [];
+
+    [ObservableProperty]
+    private string _profileFilterText = string.Empty;
 
     [ObservableProperty] private IpConfigViewModel _ipConfigViewModel;
     
@@ -39,8 +46,10 @@ public partial class IpConfigurationPageViewModel : ViewModelBase, IPageViewMode
                 Name = "Other Profile"
             }
         ];
+        _filteredIpConfigurationProfiles = new ObservableCollection<IpConfigurationProfileViewModel>(IpConfigurationProfiles);
         _ipConfigViewModel = new IpConfigViewModel(this);
 
+        FilterProfiles(ProfileFilterText);
     }
 
     [RelayCommand]
@@ -53,5 +62,53 @@ public partial class IpConfigurationPageViewModel : ViewModelBase, IPageViewMode
     public void RemoveProfileCommand(IpConfigurationProfileViewModel profileViewModel)
     {
         IpConfigurationProfiles.Remove(profileViewModel);
+    }
+
+    partial void OnProfileFilterTextChanged(string? value)
+    {
+        FilterProfiles(value);
+    }
+
+    partial void OnIpConfigurationProfilesChanged(ObservableCollection<IpConfigurationProfileViewModel> value)
+    {
+        FilterProfiles(ProfileFilterText);
+    }
+
+    private void FilterProfiles(string? value)
+    {
+        if (string.IsNullOrEmpty(value))
+        {
+            var toAdd = IpConfigurationProfiles.Except(FilteredIpConfigurationProfiles).ToList();
+            var toRemove = FilteredIpConfigurationProfiles.Except(IpConfigurationProfiles).ToList();
+
+            foreach (var profile in toRemove)
+            {
+                FilteredIpConfigurationProfiles.Remove(profile);
+            }
+
+            foreach (var profile in toAdd)
+            {
+                FilteredIpConfigurationProfiles.Add(profile);
+            }
+
+            return;
+        }
+
+        var matching = IpConfigurationProfiles
+            .Where(x => x.Name.Contains(value, StringComparison.CurrentCultureIgnoreCase))
+            .ToList();
+
+        var remove = FilteredIpConfigurationProfiles.Except(matching).ToList();
+        var add = matching.Except(FilteredIpConfigurationProfiles).ToList();
+
+        foreach (var profile in remove)
+        {
+            FilteredIpConfigurationProfiles.Remove(profile);
+        }
+
+        foreach (var profile in add)
+        {
+            FilteredIpConfigurationProfiles.Add(profile);
+        }
     }
 }

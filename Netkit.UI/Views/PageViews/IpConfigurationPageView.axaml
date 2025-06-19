@@ -21,7 +21,11 @@
                 </Style>
             </Canvas.Styles>
             <StackPanel Canvas.Top="10" Canvas.Right="10"
-                        Orientation="Horizontal">
+                        Orientation="Horizontal"
+                        Spacing="5">
+                <TextBox Width="200"
+                         Watermark="Filter..."
+                         Text="{Binding ProfileFilterText}" />
                 <Button Command="{Binding AddProfileCommand}"
                         Height="32"
                         Width="32"
@@ -43,7 +47,7 @@
             <TabItem Header="Profiles">
                 <ScrollViewer Margin="10 0" VerticalScrollBarVisibility="Auto">
                     <!-- Profiles Container -->
-                    <ItemsControl ItemsSource="{Binding IpConfigurationProfiles}">
+                    <ItemsControl ItemsSource="{Binding FilteredIpConfigurationProfiles}">
                         <ItemsControl.Styles>
                             <Style Selector="TextBox">
                                 <Setter Property="FontSize" Value="12" />
